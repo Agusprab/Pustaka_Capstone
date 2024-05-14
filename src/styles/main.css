@@ -7,3 +7,7 @@
 .font-poppins {
   font-family: "Poppins", sans-serif;
 }
+
+.btn-submit:hover {
+  background-color: #8090ee;
+}
