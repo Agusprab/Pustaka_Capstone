@@ -1,6 +1,7 @@
 function LoginInput(){
   return(
-    <form>
+    <form className="p-3">
+        <h1 className="font-poppins mt-5 text-center">Login</h1>
     <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
@@ -14,7 +15,7 @@ function LoginInput(){
         <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" className="btn btn-primary">Submit</button>
+    <button type="submit" className="btn  primary-bg">Submit</button>
 </form>
   )
 }
