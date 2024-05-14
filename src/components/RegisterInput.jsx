@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+
 function RegisterInput() {
   return (
     <form className="p-5">
-      <h1 className="font-poppins mt-5 text-center">Login</h1>
+      <h1 className="font-poppins mt-5 text-center">Register</h1>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
@@ -26,7 +27,7 @@ function RegisterInput() {
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
+          Confirm Password
         </label>
         <input
           type="password"

@@ -1,5 +1,5 @@
 import logo from "../asset/img/logo-pustaka.png";
-import LoginInput from "../components/RegisterInput";
+import RegisterInput from "../components/RegisterInput";
 
 function RegisterPage() {
   return (
@@ -9,7 +9,7 @@ function RegisterPage() {
           <img src={logo} alt="Pustaka" className="img img-fluid" />
         </div>
         <div className="col-lg-5 px-0 ">
-          <LoginInput></LoginInput>
+          <RegisterInput></RegisterInput>
         </div>
       </div>
     </div>
