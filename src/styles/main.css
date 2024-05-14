@@ -11,3 +11,10 @@
 .btn-submit:hover {
   background-color: #8090ee;
 }
+.btn-login {
+  width: 80px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

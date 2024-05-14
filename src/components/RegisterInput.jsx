@@ -43,7 +43,7 @@ function RegisterInput() {
       </div>
       <p className="mt-1">
         Already have account ?{" "}
-        <Link to="/" className="link-opacity-100-hover">
+        <Link to="/login" className="link-opacity-100-hover">
           {" "}
           Login here {" "}
         </Link>
