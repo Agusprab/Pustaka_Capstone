@@ -25,7 +25,15 @@ function Aside() {
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span className="nav-link-text ms-1">Tables</span>
+            <span className="nav-link-text ms-1">List Buku</span>
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link " href="./pages/profile.html">
+            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i className="ni ni-single-02 text-dark text-sm opacity-10"></i>
+            </div>
+            <span className="nav-link-text ms-1">List User</span>
           </a>
         </li>
         <li className="nav-item">
