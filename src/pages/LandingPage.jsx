@@ -115,8 +115,8 @@ function LandingPage() {
       <div className="container mt-5 " style={{ height: "700px" }}>
         <div className="row justify-content-center align-items-center h-100">
           <div>
-            <h1 className="mb-3"> Mudah dan Cepat dalam Peminjaman</h1>
-            <div className="row justify-content-center h-100">
+            <h1 className="mb-5"> Mudah dan Cepat dalam Peminjaman</h1>
+            <div className="row justify-content-center h-100 ">
               <div className="col-md-1">
                 <img src={list} style={{ height: "363px" }} />
               </div>
@@ -141,6 +141,51 @@ function LandingPage() {
                 <img loading="lazy" src={logo3} className="img-fluid" />
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-primary text-white  py-5 " style={{ height: "700px" }}>
+        <div className="container h-100 ">
+          <div className="row justify-content-center align-items-center h-100">
+            <div className="row">
+              <div className="col-md-3">
+                <h3>Our Location</h3>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.956952493728!2d107.63128067475678!3d-6.895752593103439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a55a715555%3A0xb8bb411d2516aad6!2sDicoding%20Academy!5e0!3m2!1sid!2sid!4v1716209934514!5m2!1sid!2sid"
+                  width="250"
+                  height="250"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <div className="col-md-3">
+                <h3>Useful Links</h3>
+                <p>Home</p>
+                <p>About Us</p>
+                <p>Superiority</p>
+                <p>Tutorial</p>
+                <p>Contact</p>
+              </div>
+              <div className="col-md-3 ">
+                <h3>Our Services</h3>
+                <p>Peminjaman Buku</p>
+                <p>Perpustakaan Online</p>
+              </div>
+              <div className="col-md-3">
+                <h3>Contact Us</h3>
+                <p>Jl. Capstone Dicoding No.6</p>
+                <p>Contact : +6281100025001</p>
+                <p>Email : pustaka@gmail.com</p>
+              </div>
+            </div>
+            <div>
+              <hr className="mt-5" style={{ border: "1px solid white" }} />
+            </div>
+            <p className="text-center">
+              @Copyright PUSTAKA. All Rights Reserved
+            </p>
           </div>
         </div>
       </div>
