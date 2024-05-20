@@ -144,7 +144,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <div className="bg-primary text-white  py-5 " style={{ height: "700px" }}>
+      <div className="bg-primary text-white  py-5 " style={{ height: "750px" }}>
         <div className="container h-100 ">
           <div className="row justify-content-center align-items-center h-100">
             <div className="row">
