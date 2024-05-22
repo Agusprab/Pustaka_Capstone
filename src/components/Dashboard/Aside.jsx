@@ -1,4 +1,5 @@
 import logo from "../../asset/img/logo-pustaka-biru.png";
+import { Link } from "react-router-dom";
 function Aside() {
     return(
         <aside className="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
@@ -13,28 +14,28 @@ function Aside() {
     <div className="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" href="">
+          <Link className="nav-link" to={'/admin'}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">Dashboard</span>
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link " href="./pages/tables.html">
+          <Link className="nav-link" to={'/admin/list-book'}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">List Buku</span>
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link " href="./pages/profile.html">
+          <Link className="nav-link" to={'/admin/list-user'}>
             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i className="ni ni-single-02 text-dark text-sm opacity-10"></i>
             </div>
             <span className="nav-link-text ms-1">List User</span>
-          </a>
+         </Link>
         </li>
         <li className="nav-item">
           <a className="nav-link " href="./pages/billing.html">

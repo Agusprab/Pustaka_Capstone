@@ -2,6 +2,8 @@
 import Aside from "../components/Dashboard/Aside";
 import Navbar from "../components/Dashboard/Navbar";
 import Dashboard from "../components/Dashboard/Dashboard";
+import ListBook from "../components/Dashboard/ListBook";
+import ListUser from "../components/Dashboard/ListUser";
 import Footer from "../components/Dashboard/Footer";
 import { Routes, Route } from 'react-router-dom';
 function AdminPage() {
@@ -14,6 +16,8 @@ function AdminPage() {
             <div className="container-fluid py-4">
                 <Routes>                
                     <Route path="/" element={<Dashboard />}></Route>
+                    <Route path="/list-book" element={<ListBook />}></Route>
+                    <Route path="/list-user" element={<ListUser />}></Route>
                 </Routes>
             <Footer/>
             </div>
