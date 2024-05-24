@@ -25,7 +25,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="container">
+    <div className="container justify-content-center align-content-center">
       <div className="row mx-0 mt-lg-3 pt-lg-5 justify-content-center">
         <div className="col-lg-5 d-none d-lg-block px-0  text-center">
           <div className="row primary-bg">
