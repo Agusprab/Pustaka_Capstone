@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
-import useInput from "../hooks/useInput";
-import PropTypes from "prop-types";
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/react-in-jsx-scope */
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import useInput from '../hooks/useInput';
 
 function LoginInput({ onSubmit }) {
-  const [email, onEmailChange] = useInput("");
-  const [password, onPasswordChange] = useInput("");
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +58,8 @@ function LoginInput({ onSubmit }) {
         </button>
       </div>
       <p className="mt-1">
-        I don't have account?{" "}
+        I don't have account?
+        {' '}
         <Link to="/register" className="link-opacity-100-hover">
           Register Here
         </Link>

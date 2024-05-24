@@ -1,20 +1,23 @@
-import logo from "../asset/img/logo-pustaka.png";
-import LoginInput from "../components/LoginInput";
-import { Link, useNavigate } from "react-router-dom";
+/* eslint-disable no-alert */
+/* eslint-disable react/react-in-jsx-scope */
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../asset/img/logo-pustaka.png';
+import LoginInput from '../components/LoginInput';
 
-const users = [{ email: "user@example.com", password: "password123" }];
+const users = [{ email: 'user@example.com', password: 'password123' }];
 function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = ({ email, password }) => {
     const user = users.find(
-      (user) => user.email === email && user.password === password
+      // eslint-disable-next-line no-shadow
+      (user) => user.email === email && user.password === password,
     );
     if (user) {
-      localStorage.setItem("isAuthenticated", true);
-      navigate("/*");
+      localStorage.setItem('isAuthenticated', true);
+      navigate('/*');
     } else {
-      alert("Invalid email or password!");
+      alert('Invalid email or password!');
     }
   };
   return (
@@ -26,7 +29,7 @@ function LoginPage() {
           </Link>
         </div>
         <div className="col-lg-5 col-12 px-0 ">
-          <LoginInput onSubmit={handleLogin}></LoginInput>
+          <LoginInput onSubmit={handleLogin} />
         </div>
       </div>
     </div>

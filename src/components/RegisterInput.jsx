@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
-import useInput from "../hooks/useInput";
-import PropTypes from "prop-types";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/react-in-jsx-scope */
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import useInput from '../hooks/useInput';
 
 function RegisterInput({ onSubmit }) {
-  const [email, onEmailChange] = useInput("");
-  const [password, onPasswordChange] = useInput("");
-  const [confirmPassword, onConfirmPasswordChange] = useInput("");
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
+  const [confirmPassword, onConfirmPasswordChange] = useInput('');
 
+  // eslint-disable-next-line no-unused-vars
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({ email, password, confirmPassword });
@@ -59,10 +62,12 @@ function RegisterInput({ onSubmit }) {
         </button>
       </div>
       <p className="mt-1">
-        Already have account ?{" "}
+        Already have account ?
+        {' '}
         <Link to="/login" className="link-opacity-100-hover">
-          {" "}
-          Login here{" "}
+          {' '}
+          Login here
+          {' '}
         </Link>
       </p>
     </form>

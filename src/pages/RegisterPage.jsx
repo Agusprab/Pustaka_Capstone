@@ -1,6 +1,8 @@
-import logo from "../asset/img/logo-pustaka.png";
-import RegisterInput from "../components/RegisterInput";
-import { Link, useNavigate } from "react-router-dom";
+/* eslint-disable no-alert */
+/* eslint-disable react/react-in-jsx-scope */
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../asset/img/logo-pustaka.png';
+import RegisterInput from '../components/RegisterInput';
 
 const users = [];
 
@@ -14,12 +16,12 @@ function RegisterPage() {
     }
     const userExists = users.some((user) => user.email === email);
     if (userExists) {
-      alert("User already exists!");
+      alert('User already exists!');
       return;
     }
     users.push({ email, password });
-    alert("Registration successful!");
-    navigate("/login");
+    alert('Registration successful!');
+    navigate('/login');
   };
 
   return (
@@ -31,7 +33,7 @@ function RegisterPage() {
           </Link>
         </div>
         <div className="col-lg-5 col-12 px-0 ">
-          <RegisterInput onSubmit={handleRegister}></RegisterInput>
+          <RegisterInput onSubmit={handleRegister} />
         </div>
       </div>
     </div>
