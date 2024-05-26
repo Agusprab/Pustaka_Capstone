@@ -14,8 +14,9 @@ function ListBook() {
               <table className="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID Book</th>
+                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Judul</th>
+                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Judul</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
                     <th className="text-secondary opacity-7" />

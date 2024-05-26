@@ -25,29 +25,11 @@ function Navbar() {
               </div>
             </div>
             <ul className="navbar-nav  justify-content-end">
-              <li className="nav-item d-flex align-items-center">
-                <a href="" className="nav-link text-white font-weight-bold px-0">
-                  <i className="fa fa-user me-sm-1" />
-                  <span className="d-sm-inline d-none">Sign In</span>
-                </a>
-              </li>
-              <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                <a href="" className="nav-link text-white p-0" id="iconNavbarSidenav">
-                  <div className="sidenav-toggler-inner">
-                    <i className="sidenav-toggler-line bg-white" />
-                    <i className="sidenav-toggler-line bg-white" />
-                    <i className="sidenav-toggler-line bg-white" />
-                  </div>
-                </a>
-              </li>
-              <li className="nav-item px-3 d-flex align-items-center">
-                <a href="" className="nav-link text-white p-0">
-                  <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer" />
-                </a>
-              </li>
+
               <li className="nav-item dropdown pe-2 d-flex align-items-center">
                 <a href="" className="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i className="fa fa-bell cursor-pointer" />
+                  <i className="fa fa-user me-sm-1" />
+                  <span className="d-sm-inline d-none">User</span>
                 </a>
                 <ul className="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                   <li className="mb-2">
