@@ -3,6 +3,8 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+/* untuk landing page */
 .primary-bg {
   background-color: #5e72e4;
 }
@@ -25,3 +27,10 @@ body {
 .navbar-landing a {
   letter-spacing: 1px;
 }
+/* akhir landing page */
+/* untuk dashboard admmin */
+.sidebar-logo-admin {
+  height: 500px !important;
+}
+
+/* akhir dashboard admin */
