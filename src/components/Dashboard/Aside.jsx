@@ -16,7 +16,7 @@ function Aside() {
         </Link>
       </div>
       <hr className="horizontal dark mt-0" />
-      <div className="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style={{ height: '100%' }}>
+      <div className="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style={{ height: '80%' }}>
         <ul className="navbar-nav">
           <li className="nav-item ">
             <Link className={filterLocation === undefined ? 'nav-link active' : 'nav-link'} to="/admin">
@@ -66,33 +66,7 @@ function Aside() {
               <span className="nav-link-text ms-1">RTL</span>
             </a>
           </li>
-          <li className="nav-item mt-3">
-            <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/profile.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-single-02 text-dark text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">Profile</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/sign-in.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-single-copy-04 text-warning text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">Sign In</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/sign-up.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-collection text-info text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">Sign Up</span>
-            </a>
-          </li>
+
         </ul>
       </div>
 

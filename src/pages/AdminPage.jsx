@@ -6,6 +6,7 @@ import Navbar from '../components/Dashboard/Navbar';
 import Dashboard from '../components/Dashboard/Dashboard';
 import ListBook from '../components/Dashboard/ListBook';
 import ListUser from '../components/Dashboard/ListUser';
+import DetailProfile from '../components/Dashboard/DetailProfile';
 import Footer from '../components/Dashboard/Footer';
 
 function AdminPage() {
@@ -17,6 +18,7 @@ function AdminPage() {
       setNavbar('');
     }
   };
+
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
@@ -28,6 +30,7 @@ function AdminPage() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/list-book" element={<ListBook />} />
             <Route path="/list-user" element={<ListUser />} />
+            <Route path="/detail-profile" element={<DetailProfile />} />
           </Routes>
           <Footer />
         </div>
