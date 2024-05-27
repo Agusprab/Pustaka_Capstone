@@ -41,6 +41,9 @@ function Navbar({ isNavbarOpen }) {
     if (filterLocation === "add-user") {
       return "Add User";
     }
+    if (filterLocation === 'add-book') {
+      return 'Add Book';
+    }
   };
 
   return (

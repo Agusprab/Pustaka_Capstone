@@ -209,6 +209,9 @@ function InputBook() {
               <button type="button" class="btn bg-gradient-primary">
                 Kirim
               </button>
+              <button type="button" className="btn bg-gradient-primary">
+                Kirim
+              </button>
             </div>
           </div>
         </div>
