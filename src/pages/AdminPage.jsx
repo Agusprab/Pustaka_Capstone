@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/react-in-jsx-scope */
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
@@ -8,6 +9,7 @@ import ListBook from '../components/Dashboard/ListBook';
 import ListUser from '../components/Dashboard/ListUser';
 import DetailProfile from '../components/Dashboard/DetailProfile';
 import Footer from '../components/Dashboard/Footer';
+import InputBook from '../components/Dashboard/InputBook';
 
 function AdminPage() {
   const [navbar, setNavbar] = useState('');
@@ -31,6 +33,7 @@ function AdminPage() {
             <Route path="/list-book" element={<ListBook />} />
             <Route path="/list-user" element={<ListUser />} />
             <Route path="/detail-profile" element={<DetailProfile />} />
+            <Route path="/add-book" element={<InputBook />} />
           </Routes>
           <Footer />
         </div>
