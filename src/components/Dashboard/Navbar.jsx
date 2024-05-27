@@ -34,6 +34,9 @@ function Navbar({ isNavbarOpen }) {
     if (filterLocation === 'detail-profile') {
       return 'Detail Profile';
     }
+    if (filterLocation === 'add-book') {
+      return 'Add Book';
+    }
   };
 
   return (
