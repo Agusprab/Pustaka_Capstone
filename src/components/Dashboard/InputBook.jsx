@@ -3,7 +3,6 @@
 function InputBook() {
   return (
     <div className="row">
-
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
@@ -14,15 +13,35 @@ function InputBook() {
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">ID Book</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  ID Book
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Judul Book</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Judul Book
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
           </div>
@@ -30,15 +49,35 @@ function InputBook() {
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Penulis</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Penulis
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Penerbit</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Penerbit
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
           </div>
@@ -46,23 +85,51 @@ function InputBook() {
           <div className="row">
             <div className="col-12">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Sinopsi</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Sinopsis
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Tahun Terbit</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Tahun Terbit
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Kategori</label>
-                <select className="form-select" aria-label="Default select example">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Kategori
+                </label>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                >
                   <option selected>--Select--</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -74,15 +141,33 @@ function InputBook() {
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Tahun Terbit</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Tahun Terbit
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Kategori</label>
-                <select className="form-select" aria-label="Default select example">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  Kategori
+                </label>
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                >
                   <option selected>--Select--</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
@@ -95,21 +180,35 @@ function InputBook() {
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
-                <label htmlFor="exampleFormControlInput1" className="form-label">QTY Buku</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  QTY Buku
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="name@example.com"
+                />
               </div>
             </div>
 
             <div className="col-lg-6">
               <div className="mb-3">
-                <label htmlFor="formFile" className="form-label">Default file input example</label>
+                <label htmlFor="formFile" className="form-label">
+                  Default file input example
+                </label>
                 <input className="form-control" type="file" id="formFile" />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-12 p-4">
-            <button type="button" class="btn bg-gradient-primary">Kirim</button>
+              <button type="button" class="btn bg-gradient-primary">
+                Kirim
+              </button>
             </div>
           </div>
         </div>
