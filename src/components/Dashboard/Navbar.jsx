@@ -5,9 +5,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/no-unknown-property */
 
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Navbar({ isNavbarOpen }) {
   const [navbarOpen, setNavbarOpen] = useState(true);
@@ -22,27 +22,37 @@ function Navbar({ isNavbarOpen }) {
   // eslint-disable-next-line consistent-return
   const namePagesHandler = () => {
     // Fungsi ini digunakan untuk menentukan page mana yang sedang aktif
-    const filterLocation = location.pathname.split("/admin/")[1];
+    const filterLocation = location.pathname.split('/admin/')[1];
     if (!filterLocation) {
-      return "Dashboard";
+      return 'Dashboard';
     }
-    if (filterLocation === "list-book") {
-      return "List Book";
+    if (filterLocation === 'list-book') {
+      return 'List Book';
     }
-    if (filterLocation === "list-user") {
-      return "List User";
+    if (filterLocation === 'list-user') {
+      return 'List User';
     }
-    if (filterLocation === "detail-profile") {
-      return "Detail Profile";
+    if (filterLocation === 'list-kategori') {
+      return 'List Kategori';
     }
-    if (filterLocation === "add-book") {
-      return "Add Book";
+    if (filterLocation === 'list-peminjaman-buku') {
+      return 'List Peminjaman Buku';
     }
-    if (filterLocation === "add-user") {
-      return "Add User";
+    if (filterLocation === 'detail-profile') {
+      return 'Detail Profile';
+    }
+
+    if (filterLocation === 'add-book') {
+      return 'Add Book';
+    }
+    if (filterLocation === 'add-user') {
+      return 'Add User';
     }
     if (filterLocation === 'add-book') {
       return 'Add Book';
+    }
+    if (filterLocation === 'add-kategori') {
+      return 'Add Kategori';
     }
   };
 
