@@ -12,7 +12,7 @@ function ListKategori() {
             <h6>Authors table</h6>
             <Link className="btn btn-primary" to="/admin/add-kategori">
               <i className="fa fa-plus" aria-hidden="true" />
-              &nbsp; Tambah Peminjaman
+              &nbsp; Tambah Kategori
             </Link>
           </div>
 
@@ -54,27 +54,14 @@ function ListKategori() {
                       >
                         Edit
                       </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        KTG123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        NOVEL
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
+                      |
                       <a
                         href=""
                         className="text-secondary font-weight-bold text-xs"
                         data-toggle="tooltip"
                         data-original-title="Edit user"
                       >
-                        Edit
+                        Delete
                       </a>
                     </td>
                   </tr>
@@ -97,6 +84,46 @@ function ListKategori() {
                         data-original-title="Edit user"
                       >
                         Edit
+                      </a>
+                      |
+                      <a
+                        href=""
+                        className="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        Delete
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">
+                        KTG123
+                      </span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">
+                        NOVEL
+                      </span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <a
+                        href=""
+                        className="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        Edit
+                      </a>
+                      |
+                      <a
+                        href=""
+                        className="text-secondary font-weight-bold text-xs"
+                        data-toggle="tooltip"
+                        data-original-title="Edit user"
+                      >
+                        Delete
                       </a>
                     </td>
                   </tr>
