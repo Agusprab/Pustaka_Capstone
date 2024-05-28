@@ -54,6 +54,9 @@ function Navbar({ isNavbarOpen }) {
     if (filterLocation === 'add-kategori') {
       return 'Add Kategori';
     }
+    if (filterLocation === 'add-peminjaman-buku') {
+      return 'Add Peminjaman Buku';
+    }
   };
 
   return (

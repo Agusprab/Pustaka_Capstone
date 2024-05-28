@@ -12,6 +12,12 @@ import Footer from '../components/Dashboard/Footer';
 import InputBook from '../components/Dashboard/InputBook';
 import InputUser from '../components/Dashboard/InputUser';
 
+import ListKategori from '../components/Dashboard/ListKategori';
+import InputKategori from '../components/Dashboard/InputKategori';
+
+import ListPeminjaman from '../components/Dashboard/ListPeminjaman';
+import InputPeminjaman from '../components/Dashboard/InputPeminjaman';
+
 function AdminPage() {
   const [navbar, setNavbar] = useState('');
   const isNavbarOpen = (navbarOpen) => {
@@ -34,9 +40,15 @@ function AdminPage() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/list-book" element={<ListBook />} />
             <Route path="/list-user" element={<ListUser />} />
+            <Route path="/list-kategori" element={<ListKategori />} />
+            <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
+
             <Route path="/detail-profile" element={<DetailProfile />} />
             <Route path="/add-book" element={<InputBook />} />
             <Route path="/add-user" element={<InputUser />} />
+            <Route path="/add-kategori" element={<InputKategori />} />
+            <Route path="/add-peminjaman-buku" element={<InputPeminjaman />} />
+
           </Routes>
           <Footer />
         </div>
