@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 function ListUser() {
   return (
     <div className="row">
@@ -20,14 +21,35 @@ function ListUser() {
               <table className="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Author
-                    </th>
-                    <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                      Function
+                  <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Created At
+                  </th>
+                  <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      ID User
+                  </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Nama
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Status
+                      Username
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Email
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Jenis Kelamin
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Alamat
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      No. Telepon
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Password
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Role
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Employed
@@ -36,272 +58,47 @@ function ListUser() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-2.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user1"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">John Michael</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            john@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">Manager</p>
-                      <p className="text-xs text-secondary mb-0">
-                        Organization
-                      </p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
+                <tr>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">23/04/24</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/18
-                      </span>
-                    </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-3.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user2"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">Alexa Liras</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            alexa@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">
-                        Programator
-                      </p>
-                      <p className="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">USR123</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        11/01/19
-                      </span>
-                    </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-4.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user3"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">Laurent Perrier</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            laurent@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">Executive</p>
-                      <p className="text-xs text-secondary mb-0">Projects</p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">Zain Mz</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        19/09/17
-                      </span>
-                    </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-3.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user4"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">Michael Levi</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            michael@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">
-                        Programator
-                      </p>
-                      <p className="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">Zain Ganteng</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        24/12/08
-                      </span>
-                    </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-2.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user5"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">Richard Gran</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            richard@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">Manager</p>
-                      <p className="text-xs text-secondary mb-0">Executive</p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">zaingtg@gmail.com</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        04/10/21
-                      </span>
-                    </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div className="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../../img/team-4.jpg"
-                            className="avatar avatar-sm me-3"
-                            alt="user6"
-                          />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center">
-                          <h6 className="mb-0 text-sm">Miriam Eric</h6>
-                          <p className="text-xs text-secondary mb-0">
-                            miriam@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="text-xs font-weight-bold mb-0">
-                        Programtor
-                      </p>
-                      <p className="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">Laki-Laki</span>
                     </td>
                     <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        14/09/20
-                      </span>
+                      <span className="text-secondary text-xs font-weight-bold">Jl. bahagia</span>
                     </td>
-                    <td className="align-middle">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">0812345678</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">123456</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">admin</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <a href="" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                         Edit
                       </a>
+                      |
+                      <a href="" className="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Delete
+                      </a>
                     </td>
-                  </tr>
+                </tr>
                 </tbody>
               </table>
             </div>
