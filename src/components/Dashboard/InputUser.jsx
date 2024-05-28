@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/react-in-jsx-scope */
 function InputUser() {
   return (
     <div className="row">
@@ -21,8 +23,8 @@ function InputUser() {
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                ></input>
+                  placeholder="ASD342SAD" disabled
+                />
               </div>
             </div>
 
