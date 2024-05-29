@@ -10,7 +10,7 @@ function ListUser() {
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Authors table</h6>
+            <h6>Authors table test</h6>
             <Link className="btn btn-primary" to="/admin/add-user">
               <i className="fa fa-plus" aria-hidden="true" />
               &nbsp; Tambah User
@@ -58,6 +58,88 @@ function ListUser() {
                   </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">23/04/24</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">USR123</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Zain Mz</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Zain Ganteng</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">zaingtg@gmail.com</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Laki-Laki</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Jl. bahagia</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">0812345678</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">123456</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">admin</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <a href="" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                      |
+                      <a href="" className="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Delete
+                      </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">23/04/24</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">USR123</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Zain Mz</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Zain Ganteng</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">zaingtg@gmail.com</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Laki-Laki</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">Jl. bahagia</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">0812345678</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">123456</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <span className="text-secondary text-xs font-weight-bold">admin</span>
+                    </td>
+                    <td className="align-middle text-center">
+                      <a href="" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Edit
+                      </a>
+                      |
+                      <a href="" className="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        Delete
+                      </a>
+                    </td>
+                </tr>
                 <tr>
                     <td className="align-middle text-center">
                       <span className="text-secondary text-xs font-weight-bold">23/04/24</span>
