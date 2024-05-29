@@ -31,7 +31,7 @@ function LandingPage() {
                   </p>
                   <div className="mt-5">
                     <button className="btn btn-lg btn-primary me-2">
-                      Let's Start Now!
+                      Let's Start Now
                     </button>
                     <button className="btn btn-lg btn-outline-primary">
                       Learn and Explore More With Us
