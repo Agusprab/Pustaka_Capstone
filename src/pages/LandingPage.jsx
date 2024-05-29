@@ -27,7 +27,8 @@ function LandingPage() {
                     <span className="text-indigo">PUSTAKA</span>!
                   </h1>
                   <p className="mt-4 text-4xl text-black">
-                    Mari Kita Jelajahi Dunia Pengetahuan di Pustaka Kami!
+                    Mari Kita Jelajahi Dunia Pengetahuan Bersama di Pustaka
+                    Kami!
                   </p>
                   <div className="mt-5">
                     <button className="btn btn-lg btn-primary me-2">
