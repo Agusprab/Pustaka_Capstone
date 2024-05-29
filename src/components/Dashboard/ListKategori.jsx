@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function ListKategori() {
   return (
