@@ -23,7 +23,7 @@ function LandingPage() {
               <div className="col-md-12 d-flex flex-column justify-content-center">
                 <div className="px-5">
                   <h1 className="text-5xl font-bold text-indigo mt-lg-0 mt-5">
-                    Selamat Datang Semua di
+                    Welcome Datang di{" "}
                     <span className="text-indigo">PUSTAKA</span>!
                   </h1>
                   <p className="mt-4 text-4xl text-black">
@@ -31,7 +31,7 @@ function LandingPage() {
                   </p>
                   <div className="mt-5">
                     <button className="btn btn-lg btn-primary me-2">
-                      Let's Start Now
+                      Let's Start Now!
                     </button>
                     <button className="btn btn-lg btn-outline-primary">
                       Learn and Explore More With Us
