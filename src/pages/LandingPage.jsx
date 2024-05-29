@@ -34,7 +34,7 @@ function LandingPage() {
                       Let's Start Now!
                     </button>
                     <button className="btn btn-lg btn-outline-primary">
-                      Learn More
+                      Learn and Explore More
                     </button>
                   </div>
                 </div>
