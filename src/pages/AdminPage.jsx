@@ -17,6 +17,9 @@ import InputKategori from '../components/Dashboard/InputKategori';
 
 import ListPeminjaman from '../components/Dashboard/ListPeminjaman';
 import InputPeminjaman from '../components/Dashboard/InputPeminjaman';
+import EditBook from '../components/Dashboard/EditBook';
+import EditKategori from '../components/Dashboard/EditKategori';
+import EditUser from '../components/Dashboard/EditUser';
 
 function AdminPage() {
   const [navbar, setNavbar] = useState('');
@@ -45,8 +48,11 @@ function AdminPage() {
 
             <Route path="/detail-profile" element={<DetailProfile />} />
             <Route path="/add-book" element={<InputBook />} />
+            <Route path="/edit-book" element={<EditBook />} />
             <Route path="/add-user" element={<InputUser />} />
+            <Route path="/edit-user" element={<EditUser />} />
             <Route path="/add-kategori" element={<InputKategori />} />
+            <Route path="/edit-kategori" element={<EditKategori />} />
             <Route path="/add-peminjaman-buku" element={<InputPeminjaman />} />
           </Routes>
           <Footer />

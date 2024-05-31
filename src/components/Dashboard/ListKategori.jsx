@@ -46,14 +46,14 @@ function ListKategori() {
                       </span>
                     </td>
                     <td className="align-middle text-center">
-                      <a
-                        href=""
+                      <Link
+                        to="/admin/edit-kategori"
                         className="text-secondary font-weight-bold text-xs"
                         data-toggle="tooltip"
                         data-original-title="Edit user"
                       >
                         Edit
-                      </a>
+                      </Link>
                       |
                       <a
                         href=""
