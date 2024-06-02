@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
 
 function RegisterInput({ onSubmit }) {
+  const [name, onNameChange] = useInput('');
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const [confirmPassword, onConfirmPasswordChange] = useInput('');
@@ -16,8 +17,21 @@ function RegisterInput({ onSubmit }) {
   };
 
   return (
-    <form className="p-5">
-      <h1 className="font-poppins mt-5 text-center">Register</h1>
+    <form className="p-5 pt-3">
+      <h1 className="font-poppins text-center">Register</h1>
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
+          Name
+        </label>
+        <input
+          type="text"
+          className="form-control shadow rounded-pill border-0"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          value={name}
+          onChange={onNameChange}
+        />
+      </div>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email address

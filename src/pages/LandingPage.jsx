@@ -3,28 +3,30 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/no-unescaped-entities */
-import Navbar from "../components/Navbar";
-import logo from "../asset/img/landing-page-1.png";
-import logo2 from "../asset/img/landing-page-2.png";
-import logo3 from "../asset/img/landing-page-3.png";
-import fitur1 from "../asset/img/fitur-1.png";
-import fitur2 from "../asset/img/fitur-2.png";
-import fitur3 from "../asset/img/fitur-3.png";
-import list from "../asset/img/list.png";
+import Navbar from '../components/Navbar';
+import logo from '../asset/img/landing-page-1.png';
+import logo2 from '../asset/img/landing-page-2.png';
+import logo3 from '../asset/img/landing-page-3.png';
+import fitur1 from '../asset/img/fitur-1.png';
+import fitur2 from '../asset/img/fitur-2.png';
+import fitur3 from '../asset/img/fitur-3.png';
+import list from '../asset/img/list.png';
 
 function LandingPage() {
   return (
     <div>
       <Navbar />
-      <div className="container" style={{ height: "625px" }}>
+      <div className="container" style={{ height: '625px' }}>
         <div className="row justify-content-center align-items-center h-100">
           <div className="col-lg-7 col-12">
             <div className="row h-100">
               <div className="col-md-12 d-flex flex-column justify-content-center">
                 <div className="px-5">
                   <h1 className="text-5xl font-bold text-indigo mt-lg-0 mt-5">
-                    Selamat Datang di{" "}
-                    <span className="text-indigo">PUSTAKA</span>!
+                    Selamat Datang di
+                    {' '}
+                    <span className="text-indigo">PUSTAKA</span>
+                    !
                   </h1>
                   <p className="mt-4 text-4xl text-black">
                     Mari Kita Jelajahi Dunia Pengetahuan Bersama di Pustaka
@@ -59,13 +61,13 @@ function LandingPage() {
                   <div className="px-5">
                     <h1
                       className="font-bold text-indigo text-lg-start text-center"
-                      style={{ fontSize: "2.5rem" }}
+                      style={{ fontSize: '2.5rem' }}
                     >
                       Apa itu PUSTAKA?
                     </h1>
                     <div
                       className="mt-4 mb-5 text-lg-start text-lg-left text-"
-                      style={{ fontSize: "1.5rem" }}
+                      style={{ fontSize: '1.5rem' }}
                     >
                       Pustaka merupakan platform peminjaman buku berbasis
                       website yang dirancang khusus untuk meningkatkan
@@ -117,7 +119,7 @@ function LandingPage() {
             <h1 className="mb-5"> Mudah dan Cepat dalam Peminjaman</h1>
             <div className="row justify-content-center h-100 ">
               <div className="col-lg-1 col-1">
-                <img src={list} style={{ height: "363px" }} />
+                <img src={list} style={{ height: '363px' }} />
               </div>
               <div className="col-lg-6 col-11">
                 <h3>Daftar Menjadi Anggota</h3>
@@ -180,7 +182,7 @@ function LandingPage() {
               </div>
             </div>
             <div>
-              <hr className="mt-5" style={{ border: "1px solid white" }} />
+              <hr className="mt-5" style={{ border: '1px solid white' }} />
             </div>
             <p className="text-center">
               @Copyright PUSTAKA. All Rights Reserved
