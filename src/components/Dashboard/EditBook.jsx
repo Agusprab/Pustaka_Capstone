@@ -1,12 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-function InputPeminjaman() {
+function EditBook() {
   return (
     <div className="row">
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Form Add Peminjaman</h6>
+            <h6>Edit Book</h6>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2" />
@@ -207,7 +207,7 @@ function InputPeminjaman() {
           <div className="row">
             <div className="col-12 p-4">
               <button type="button" className="btn bg-gradient-primary">
-                Kirim
+                Simpan
               </button>
             </div>
           </div>
@@ -217,4 +217,4 @@ function InputPeminjaman() {
   );
 }
 
-export default InputPeminjaman;
+export default EditBook;

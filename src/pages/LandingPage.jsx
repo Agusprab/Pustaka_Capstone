@@ -29,11 +29,12 @@ function LandingPage() {
                     !
                   </h1>
                   <p className="mt-4 text-4xl text-black">
-                    Mari Jelajahi Dunia Pengetahuan di Pustaka Kami!
+                    Mari Kita Jelajahi Dunia Pengetahuan Bersama di Pustaka
+                    Kami!
                   </p>
                   <div className="mt-5">
                     <button className="btn btn-lg btn-primary me-2">
-                      Let's Start
+                      Let's Start Now!
                     </button>
                     <button className="btn btn-lg btn-outline-primary">
                       Learn and Explore More With Us
@@ -48,9 +49,7 @@ function LandingPage() {
           </div>
         </div>
       </div>
-      <div
-        className="bg-primary text-white py-5 mt-5"
-      >
+      <div className="bg-primary text-white py-5 mt-5">
         <div className="container h-100 ">
           <div className="row justify-content-center align-items-center h-100">
             <div className="col-lg-5 col-12 d-flex justify-content-center align-items-center">
@@ -60,10 +59,16 @@ function LandingPage() {
               <div className="row h-100 justify-content-center align-items-center">
                 <div className="col-md-12">
                   <div className="px-5">
-                    <h1 className="font-bold text-indigo text-lg-start text-center" style={{ fontSize: '2.5rem' }}>
+                    <h1
+                      className="font-bold text-indigo text-lg-start text-center"
+                      style={{ fontSize: '2.5rem' }}
+                    >
                       Apa itu PUSTAKA?
                     </h1>
-                    <div className="mt-4 mb-5 text-lg-start text-lg-left text-" style={{ fontSize: '1.5rem' }}>
+                    <div
+                      className="mt-4 mb-5 text-lg-start text-lg-left text-"
+                      style={{ fontSize: '1.5rem' }}
+                    >
                       Pustaka merupakan platform peminjaman buku berbasis
                       website yang dirancang khusus untuk meningkatkan
                       pengalaman belajar dan membaca di perpustakaan sekolah.
@@ -82,9 +87,7 @@ function LandingPage() {
             <h1 className="text-center"> Keunggulan Pustaka</h1>
             <div className="row  justify-content-center align-items-center mt-5 gap-5 pb-5">
               <div className="col-md-3 ">
-                <div
-                  className="shadow rounded-4 border-0 mt-5 row align-items-center"
-                >
+                <div className="shadow rounded-4 border-0 mt-5 row align-items-center">
                   <div>
                     <img loading="lazy" src={fitur1} className="img-fluid" />
                     <p>Kemudahan Peminjaman dan Pengembalian</p>
@@ -92,9 +95,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="col-md-3 ">
-                <div
-                  className="shadow rounded-4 border-0 row align-items-center"
-                >
+                <div className="shadow rounded-4 border-0 row align-items-center">
                   <div>
                     <img loading="lazy" src={fitur2} className="img-fluid" />
 
@@ -103,9 +104,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="col-md-3 ">
-                <div
-                  className="shadow rounded-4 border-0 mt-5 row align-items-center"
-                >
+                <div className="shadow rounded-4 border-0 mt-5 row align-items-center">
                   <img loading="lazy" src={fitur3} className="img-fluid" />
                   <p> Peminjaman Tanpa Batas</p>
                 </div>

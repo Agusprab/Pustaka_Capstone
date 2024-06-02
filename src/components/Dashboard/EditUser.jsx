@@ -1,14 +1,13 @@
 /* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-max-props-per-line */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
-function InputUser() {
+function EditUser() {
   return (
     <div className="row">
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h5>Form Add User</h5>
+            <h5>Edit User</h5>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2" />
@@ -25,7 +24,8 @@ function InputUser() {
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="ASD342SAD" disabled
+                  placeholder="ASD342SAD"
+                  disabled
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@ function InputUser() {
               </div>
               <div className="row">
                 <div className="col-12 p-4">
-                  <button className="btn btn-primary">Kirim</button>
+                  <button className="btn btn-primary">Simpan</button>
                 </div>
               </div>
             </div>
@@ -179,4 +179,4 @@ function InputUser() {
   );
 }
 
-export default InputUser;
+export default EditUser;

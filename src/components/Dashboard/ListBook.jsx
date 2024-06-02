@@ -51,9 +51,9 @@ function ListBook() {
                       <span className="text-secondary text-xs font-weight-bold">982</span>
                     </td>
                     <td className="align-middle text-center">
-                      <a href="" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                      <Link to="/admin/edit-book" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                         Edit
-                      </a>
+                      </Link>
                       |
                       <a href="" className="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                         Delete
