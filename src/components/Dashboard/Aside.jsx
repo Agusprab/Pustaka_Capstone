@@ -57,31 +57,7 @@ function Aside() {
               </div>
               <span className="nav-link-text ms-1">List User</span>
             </Link>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/billing.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-credit-card text-success text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">Billing</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/virtual-reality.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-app text-info text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">Virtual Reality</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link " href="./pages/rtl.html">
-              <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                <i className="ni ni-world-2 text-danger text-sm opacity-10" />
-              </div>
-              <span className="nav-link-text ms-1">RTL</span>
-            </a>
-          </li>
+          </li>     
 
         </ul>
       </div>

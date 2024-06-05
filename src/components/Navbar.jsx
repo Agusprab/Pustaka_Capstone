@@ -32,13 +32,13 @@ export default function Navbar() {
             <li className="nav-item px-1">
               <a className="nav-link text-white fw-bold mt-lg-1" aria-current="page" href="#">Contact</a>
             </li>
-            <li className="nav-item px-1">
-              <a className="nav-link text-white" aria-current="page" href="#">
-                <button type="button" className="btn btn-outline-light btn-login rounded-pill">
-                  {' '}
-                  <Link to="/login" className="text-white link-underline link-underline-opacity-0">Login</Link>
-                </button>
-              </a>
+            <li className="nav-item px-1 mt-2">
+
+              <button type="button" className="btn btn-outline-light btn-login rounded-pill nav-link text-white">
+                {' '}
+                <Link to="/login" className="text-white link-underline link-underline-opacity-0">Login</Link>
+              </button>
+
             </li>
           </ul>
 

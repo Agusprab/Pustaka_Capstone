@@ -1,3 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/control-has-associated-label */
@@ -5,11 +10,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/no-unknown-property */
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { LogOut, reset } from '../../features/authSlice';
 
-function Navbar({ isNavbarOpen }) {
+function Navbar({ isNavbarOpen, user }) {
   const [navbarOpen, setNavbarOpen] = useState(true);
   const location = useLocation();
   const sidebarHandler = (e) => {
@@ -17,6 +24,14 @@ function Navbar({ isNavbarOpen }) {
     e.preventDefault();
     isNavbarOpen(navbarOpen);
     setNavbarOpen(!navbarOpen);
+  };
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate('/');
   };
 
   // eslint-disable-next-line consistent-return
@@ -119,7 +134,7 @@ function Navbar({ isNavbarOpen }) {
                   aria-expanded="false"
                 >
                   <i className="fa fa-user me-sm-1" />
-                  <span className="d-sm-inline d-none"> Mark Davis</span>
+                  <span className="d-sm-inline d-none">{user && user.name } </span>
                 </a>
                 <ul
                   className="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
@@ -137,9 +152,9 @@ function Navbar({ isNavbarOpen }) {
                     </Link>
                   </li>
                   <li className="mb-2">
-                    <Link
+                    <button
                       className="dropdown-item border-radius-md"
-                      to="/login"
+                      onClick={logout}
                     >
                       <div className="icon icon-shape icon-sm">
                         <i
@@ -148,7 +163,7 @@ function Navbar({ isNavbarOpen }) {
                         />
                       </div>
                       <span className="nav-link-text ms-1">Sign Out</span>
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </li>
