@@ -13,7 +13,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { LogOut, reset } from '../../features/authSlice';
 
 function Navbar({ isNavbarOpen, user }) {
