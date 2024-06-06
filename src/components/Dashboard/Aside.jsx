@@ -57,7 +57,7 @@ function Aside() {
               </div>
               <span className="nav-link-text ms-1">List User</span>
             </Link>
-          </li>     
+          </li>
 
         </ul>
       </div>

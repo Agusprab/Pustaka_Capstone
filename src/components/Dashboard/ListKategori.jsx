@@ -1,9 +1,12 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function ListKategori() {
+function ListKategori({ kategori, deleteKategori }) {
   return (
     <div className="row">
       <div className="col-12">
@@ -24,7 +27,7 @@ function ListKategori() {
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       ID Kategori
                     </th>
-                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
                       Nama Kategori
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -34,99 +37,45 @@ function ListKategori() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        KTG123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        PELAJARAN
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <Link
-                        to="/admin/edit-kategori"
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </Link>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        KTG123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        NOVEL
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        KTG123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        NOVEL
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
+                  {kategori && kategori.map((kategori) => (
+                    <tr key={kategori.uuid}>
+                      <td className="align-middle text-center">
+                        <span className="text-secondary text-xs font-weight-bold">
+                          {kategori.id}
+                        </span>
+                      </td>
+                      <td className="align-middle text-center">
+                        <span className="text-secondary text-xs font-weight-bold">
+                          {kategori.name}
+                        </span>
+                      </td>
+                      <td className="align-middle text-center">
+                        <Link
+                          to={`/admin/edit-kategori/${kategori.uuid}`}
+                          className="text-secondary font-weight-bold text-xs"
+                        >
+                          Edit
+                        </Link>
+                        |
+                        <Link
+                          className="text-danger font-weight-bold text-xs"
+                          onClick={() => deleteKategori(kategori.uuid)}
+                        >
+                          Delete
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                  {!kategori && (
+                    <tr>
+                      <td colSpan="4" className="text-center">
+                        <div className="spinner-border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+
+                  )}
                 </tbody>
               </table>
             </div>
@@ -136,5 +85,11 @@ function ListKategori() {
     </div>
   );
 }
+
+ListKategori.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  kategori: PropTypes.array,
+  deleteKategori: PropTypes.func,
+};
 
 export default ListKategori;

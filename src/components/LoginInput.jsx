@@ -53,6 +53,8 @@ function LoginInput() {
         <input
           type="password"
           className="form-control shadow rounded-pill border-0"
+          name="password"
+          autoComplete="on"
           id="exampleInputPassword1"
           value={password}
           onChange={onPasswordChange}

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/react-in-jsx-scope */
@@ -5,6 +6,10 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe } from '../features/authSlice';
+import {
+  getAllKategori, addKategori, deleteKategoriById, updateKategoriById,
+} from '../features/kategoriSlice';
+
 import Aside from '../components/Dashboard/Aside';
 import Navbar from '../components/Dashboard/Navbar';
 import Dashboard from '../components/Dashboard/Dashboard';
@@ -24,14 +29,19 @@ import EditUser from '../components/Dashboard/EditUser';
 
 function AdminPage() {
   const [navbar, setNavbar] = useState('');
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
+  const { kategori } = useSelector((state) => state.kategori);
 
   useEffect(() => {
     dispatch(getMe());
+    dispatch(getAllKategori());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllKategori());
+  }, [kategori]);
 
   useEffect(() => {
     if (isError) {
@@ -48,6 +58,26 @@ function AdminPage() {
     }
   };
 
+  const addKategorihandle = (name) => {
+    dispatch(addKategori(name));
+    navigate('/admin/list-kategori');
+  };
+
+  // eslint-disable-next-line no-shadow
+  const deleteKategori = (uuid) => {
+    if (window.confirm('Are you sure you want to delete this category?')) {
+      dispatch(deleteKategoriById(uuid));
+    }
+  };
+
+  const editKategori = (uuid, name) => {
+    const input = {
+      uuid, name,
+    };
+    dispatch(updateKategoriById(input));
+    navigate('/admin/list-kategori');
+  };
+
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
@@ -59,7 +89,7 @@ function AdminPage() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/list-book" element={<ListBook />} />
             <Route path="/list-user" element={<ListUser />} />
-            <Route path="/list-kategori" element={<ListKategori />} />
+            <Route path="/list-kategori" element={<ListKategori kategori={kategori} deleteKategori={deleteKategori} />} />
             <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
 
             <Route path="/detail-profile" element={<DetailProfile />} />
@@ -67,8 +97,8 @@ function AdminPage() {
             <Route path="/edit-book" element={<EditBook />} />
             <Route path="/add-user" element={<InputUser />} />
             <Route path="/edit-user" element={<EditUser />} />
-            <Route path="/add-kategori" element={<InputKategori />} />
-            <Route path="/edit-kategori" element={<EditKategori />} />
+            <Route path="/add-kategori" element={<InputKategori addKategorihandle={addKategorihandle} />} />
+            <Route path="/edit-kategori/:uuid" element={<EditKategori kategori={kategori} editKategori={editKategori} />} />
             <Route path="/add-peminjaman-buku" element={<InputPeminjaman />} />
           </Routes>
           <Footer />

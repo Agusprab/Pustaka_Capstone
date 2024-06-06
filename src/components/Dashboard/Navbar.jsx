@@ -72,6 +72,9 @@ function Navbar({ isNavbarOpen, user }) {
     if (filterLocation === 'add-peminjaman-buku') {
       return 'Add Peminjaman Buku';
     }
+    if (filterLocation.includes('edit-kategori')) {
+      return 'Edit Kategori';
+    }
   };
 
   return (
