@@ -1,52 +1,62 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-max-props-per-line */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
-function InputUser() {
+
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import useInput from '../../hooks/useInput';
+
+function InputUser({ addUserhandle }) {
+  const { users, message, isError } = useSelector((state) => state.users);
+  const getLastId = users && users.length > 0 ? users[users.length - 1].id + 1 : 0;
+  const [name, setName] = useInput('');
+  const [email, setEmail] = useInput('');
+  const [password, setPassword] = useInput('');
+  const [jenisKelamin, setJenisKelamin] = useInput('');
+  const [alamat, setAlamat] = useInput('');
+  const [noTlp, setNoTlp] = useInput('');
+  const [role, setRole] = useInput('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addUserhandle(
+      name,
+      email,
+      password,
+      jenisKelamin,
+      alamat,
+      noTlp,
+      role,
+    );
+
+    console.log(
+      name,
+      email,
+      password,
+      jenisKelamin,
+      alamat,
+      noTlp,
+      role,
+    );
+  };
+
   return (
     <div className="row">
-      <div className="col-12">
-        <div className="card mb-4">
-          <div className="card-header pb-0">
-            <h5>Form Add User</h5>
-          </div>
-
-          <div className="card-body px-0 pt-0 pb-2" />
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  ID USER
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="ASD342SAD" disabled
-                />
-              </div>
+      <form onSubmit={handleSubmit}>
+        <div className="col-12">
+          <div className="card mb-4">
+            <div className="card-header pb-0">
+              <h5>Form Add User</h5>
             </div>
-
-            <div className="col-lg-6">
-              <div className="p-1">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  NAMA USER
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-            </div>
-
+            { isError && (
+            <p className="text-center text-danger">
+              {message}
+              {' '}
+            </p>
+            )}
+            <div className="card-body px-0 pt-0 pb-2" />
             <div className="row">
               <div className="col-lg-6">
                 <div className="p-2">
@@ -54,69 +64,71 @@ function InputUser() {
                     htmlFor="exampleFormControlInput1"
                     className="form-label"
                   >
-                    USERNAME
+                    ID USER
                   </label>
                   <input
                     type="email"
                     className="form-control"
                     id="exampleFormControlInput1"
-                    placeholder="name@example.com"
+                    placeholder="ex: 012"
+                    value={getLastId}
+                    disabled
                   />
                 </div>
               </div>
 
               <div className="col-lg-6">
-                <div className="p-2">
+                <div className="p-1">
                   <label
                     htmlFor="exampleFormControlInput1"
                     className="form-label"
                   >
+                    NAMA USER
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="name"
+                    value={name}
+                    onChange={setName}
+                  />
+                </div>
+              </div>
+
+              {/* <div className="row">
+                <div className="col-lg-6">
+                  <div className="p-2">
+                    <label
+                      htmlFor="exampleFormControlInput1"
+                      className="form-label"
+                    >
+                      USERNAME
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="name@example.com"
+                    />
+                  </div>
+                </div> */}
+
+              <div className="col-lg-6">
+                <div className="p-2">
+                  <label htmlFor="jenisKelaminInput" className="form-label">
                     JENIS KELAMIN
                   </label>
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    value={jenisKelamin}
+                    onChange={setJenisKelamin}
                   >
-                    <option selected>--Select--</option>
-                    <option value="1">Laki - Laki</option>
-                    <option value="2">Perempuan</option>
+                    <option value="">--Select--</option>
+                    <option value="Laki-Laki">Laki - Laki</option>
+                    <option value="Perempuan">Perempuan</option>
                   </select>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-6">
-                <div className="p-2">
-                  <label
-                    htmlFor="exampleFormControlInput1"
-                    className="form-label"
-                  >
-                    EMAIL
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="name@example.com"
-                  />
-                </div>
-              </div>
-
-              <div className="col-lg-6">
-                <div className="p-2">
-                  <label
-                    htmlFor="exampleFormControlInput1"
-                    className="form-label"
-                  >
-                    PASSWORD
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="password"
-                  />
                 </div>
               </div>
 
@@ -127,56 +139,106 @@ function InputUser() {
                       htmlFor="exampleFormControlInput1"
                       className="form-label"
                     >
-                      ALAMAT
+                      EMAIL
                     </label>
                     <input
                       type="email"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="email"
+                      placeholder="name@example.com"
+                      value={email}
+                      onChange={setEmail}
                     />
                   </div>
                 </div>
 
                 <div className="col-lg-6">
                   <div className="p-2">
-                    <label>NO.TELEPON</label>
+                    <label
+                      htmlFor="exampleFormControlInput1"
+                      className="form-label"
+                    >
+                      PASSWORD
+                    </label>
                     <input
-                      type="number"
+                      type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="08********"
+                      placeholder="password"
+                      value={password}
+                      onChange={setPassword}
                     />
                   </div>
                 </div>
-              </div>
 
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="p-2">
-                    <label>ROLE</label>
-                    <select
-                      className="form-select"
-                      aria-label="Default select example"
-                    >
-                      <option selected>--Select--</option>
-                      <option value="1">User</option>
-                      <option value="2">Admin</option>
-                    </select>
+                <div className="row">
+                  <div className="col-lg-6">
+                    <div className="p-2">
+                      <label
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
+                      >
+                        ALAMAT
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="alamat"
+                        value={alamat}
+                        onChange={setAlamat}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <div className="p-2">
+                      <label>NO.TELEPON</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="08********"
+                        value={noTlp}
+                        onChange={setNoTlp}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-12 p-4">
-                  <button className="btn btn-primary">Kirim</button>
+
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div className="p-2">
+                      <label>ROLE</label>
+                      <select
+                        className="form-select"
+                        aria-label="Default select example"
+                        value={role}
+                        onChange={setRole}
+                      >
+                        <option selected>--Select--</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12 p-4">
+                    <button type="submit" className="btn btn-primary">Kirim</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
+
+InputUser.propTypes = {
+  addUserhandle: PropTypes.func.isRequired,
+};
 
 export default InputUser;

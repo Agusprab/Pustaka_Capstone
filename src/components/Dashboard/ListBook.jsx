@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 
 function ListBook({ book }) {
-  console.log(book);
   return (
     <div className="row">
       <div className="col-12">
