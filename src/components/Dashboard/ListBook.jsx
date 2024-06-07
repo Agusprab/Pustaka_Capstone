@@ -1,8 +1,11 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from "react-router-dom";
-import propTypes from "prop-types";
+import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 function ListBook({ book }) {
   return (
@@ -44,12 +47,12 @@ function ListBook({ book }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {book &&
-                    book.map((book) => (
+                  {book
+                    && book.map((book) => (
                       <tr key={book.uuid}>
                         <td className="align-middle text-center">
                           <span className="text-secondary text-xs font-weight-bold">
-                            {book.uuid}
+                            {book.id}
                           </span>
                         </td>
                         <td className="align-middle text-center">
