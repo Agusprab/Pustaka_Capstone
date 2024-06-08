@@ -20,6 +20,8 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
     const response = await axios.post(`${API_URL}/login`, {
       email: user.email,
       password: user.password,
+    }, {
+      withCredentials: true,
     });
     return response.data;
   } catch (error) {
@@ -32,7 +34,12 @@ export const LoginUser = createAsyncThunk('user/LoginUser', async (user, thunkAP
 
 export const getMe = createAsyncThunk('user/getMe', async (_, thunkAPI) => {
   try {
-    const response = await axios.get(`${API_URL}/me`);
+    const response = await axios.get(`${API_URL}/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    });
     return response.data;
   } catch (error) {
     if (error.response) {

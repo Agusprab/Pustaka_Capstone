@@ -5,8 +5,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  getAllKategori,
 
-function ListKategori({ kategori, deleteKategori }) {
+} from '../../features/kategoriSlice';
+
+function ListKategori({ kategori, deleteKategori, isLoadingKategori }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllKategori());
+  }, [kategori]);
   return (
     <div className="row">
       <div className="col-12">
@@ -66,6 +76,7 @@ function ListKategori({ kategori, deleteKategori }) {
                       </td>
                     </tr>
                   ))}
+                  {/* ini berguna ketika data belum di load */}
                   {!kategori && (
                     <tr>
                       <td colSpan="4" className="text-center">
@@ -76,6 +87,18 @@ function ListKategori({ kategori, deleteKategori }) {
                     </tr>
 
                   )}
+                  {/* ini berguna ketika ada perubahan di kategori */}
+                  {!isLoadingKategori && (
+                  <tr>
+                    <td colSpan="4" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  )}
+
                 </tbody>
               </table>
             </div>
@@ -90,6 +113,7 @@ ListKategori.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   kategori: PropTypes.array,
   deleteKategori: PropTypes.func,
+  isLoadingKategori: PropTypes.bool,
 };
 
 export default ListKategori;

@@ -37,7 +37,7 @@ function AdminPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
-  const { kategori } = useSelector((state) => state.kategori);
+  const { kategori, isLoadingKategori } = useSelector((state) => state.kategori);
   const { book } = useSelector((state) => state.book);
   const { users } = useSelector((state) => state.users);
 
@@ -48,9 +48,9 @@ function AdminPage() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getAllKategori());
-  }, [kategori]);
+  // useEffect(() => {
+  //   dispatch(getAllKategori());
+  // }, [kategori]);
 
   useEffect(() => {
     if (isError) {
@@ -110,6 +110,7 @@ function AdminPage() {
                 <ListKategori
                   kategori={kategori}
                   deleteKategori={deleteKategori}
+                  isLoadingKategori={isLoadingKategori}
                 />
               )}
             />
