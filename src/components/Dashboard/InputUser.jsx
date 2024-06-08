@@ -14,32 +14,18 @@ function InputUser({ addUserhandle }) {
   const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
-  const [jenisKelamin, setJenisKelamin] = useInput('');
+  const [jenisKelamin, setJenisKelamin] = useInput('Laki-Laki');
   const [alamat, setAlamat] = useInput('');
   const [noTlp, setNoTlp] = useInput('');
-  const [role, setRole] = useInput('');
+  const [role, setRole] = useInput('user');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUserhandle(
-      name,
-      email,
-      password,
-      jenisKelamin,
-      alamat,
-      noTlp,
-      role,
-    );
+    const newUser = {
+      name, email, password, jenisKelamin, alamat, noTlp, role,
+    };
 
-    console.log(
-      name,
-      email,
-      password,
-      jenisKelamin,
-      alamat,
-      noTlp,
-      role,
-    );
+    addUserhandle(newUser);
   };
 
   return (
@@ -72,7 +58,7 @@ function InputUser({ addUserhandle }) {
                     id="exampleFormControlInput1"
                     placeholder="ex: 012"
                     value={getLastId}
-                    disabled
+                    disabled required
                   />
                 </div>
               </div>
@@ -90,8 +76,10 @@ function InputUser({ addUserhandle }) {
                     className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name"
+                    required
                     value={name}
                     onChange={setName}
+
                   />
                 </div>
               </div>
@@ -122,11 +110,11 @@ function InputUser({ addUserhandle }) {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    required
                     value={jenisKelamin}
                     onChange={setJenisKelamin}
                   >
-                    <option value="">--Select--</option>
-                    <option value="Laki-Laki">Laki - Laki</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
                     <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
@@ -146,6 +134,7 @@ function InputUser({ addUserhandle }) {
                       className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="name@example.com"
+                      required
                       value={email}
                       onChange={setEmail}
                     />
@@ -165,6 +154,7 @@ function InputUser({ addUserhandle }) {
                       className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="password"
+                      required
                       value={password}
                       onChange={setPassword}
                     />
@@ -185,6 +175,7 @@ function InputUser({ addUserhandle }) {
                         className="form-control"
                         id="exampleFormControlInput1"
                         placeholder="alamat"
+                        required
                         value={alamat}
                         onChange={setAlamat}
                       />
@@ -199,6 +190,7 @@ function InputUser({ addUserhandle }) {
                         className="form-control"
                         id="exampleFormControlInput1"
                         placeholder="08********"
+                        required
                         value={noTlp}
                         onChange={setNoTlp}
                       />
@@ -213,10 +205,11 @@ function InputUser({ addUserhandle }) {
                       <select
                         className="form-select"
                         aria-label="Default select example"
+                        required
                         value={role}
                         onChange={setRole}
                       >
-                        <option selected>--Select--</option>
+
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                       </select>
