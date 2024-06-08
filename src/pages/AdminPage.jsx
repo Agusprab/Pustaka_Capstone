@@ -72,33 +72,8 @@ function AdminPage() {
     navigate('/admin/list-kategori');
   };
 
-  const addUserhandle = (
-    name,
-    email,
-    password,
-    jenisKelamin,
-    alamat,
-    noTlp,
-    role,
-  ) => {
-    dispatch(addUser(
-      name,
-      email,
-      password,
-      jenisKelamin,
-      alamat,
-      noTlp,
-      role,
-    ));
-    console.log(
-      name,
-      email,
-      password,
-      jenisKelamin,
-      alamat,
-      noTlp,
-      role,
-    );
+  const addUserhandle = (newUser) => {
+    dispatch(addUser(newUser));
     navigate('/admin/list-user');
   };
 

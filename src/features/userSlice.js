@@ -38,25 +38,16 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
   }
 });
 
-export const addUser = createAsyncThunk('addUser', async (
-  name,
-  email,
-  password,
-  jenisKelamin,
-  alamat,
-  noTlp,
-  role,
-  thunkAPI,
-) => {
+export const addUser = createAsyncThunk('addUser', async (newUser, thunkAPI) => {
   try {
     const response = await axios.post(`${API_URL}/users`, {
-      name,
-      email,
-      password,
-      jenisKelamin,
-      alamat,
-      noTlp,
-      role,
+      name: newUser.name,
+      email: newUser.email,
+      password: newUser.password,
+      jenisKelamin: newUser.jenisKelamin,
+      alamat: newUser.alamat,
+      noTlp: newUser.noTlp,
+      role: newUser.role,
     });
     return response.data;
   } catch (error) {

@@ -5,6 +5,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { postedAt } from '../../utils/index';
 
 function ListUser({ users }) {
   return (
@@ -23,9 +24,7 @@ function ListUser({ users }) {
               <table className="table align-items-center mb-0">
                 <thead>
                 <tr>
-                  <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Created At
-                  </th>
+
                   <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       ID User
                   </th>
@@ -48,7 +47,10 @@ function ListUser({ users }) {
                       Role
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Employed
+                      Created At
+                    </th>
+                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                      Action
                     </th>
                     <th className="text-secondary opacity-7" />
                 </tr>
@@ -56,11 +58,9 @@ function ListUser({ users }) {
                 <tbody>
                 {users && users.map((user) => (
                   <tr key={user.uuid}>
+
                   <td className="align-middle text-center">
-                    <span className="text-secondary text-xs font-weight-bold">23/04/24</span>
-                  </td>
-                  <td className="align-middle text-center">
-                    <span className="text-secondary text-xs font-weight-bold">USR123</span>
+                    <span className="text-secondary text-xs font-weight-bold">{user.id}</span>
                   </td>
                   <td className="align-middle text-center">
                     <span className="text-secondary text-xs font-weight-bold">{user.name}</span>
@@ -79,6 +79,9 @@ function ListUser({ users }) {
                   </td>
                   <td className="align-middle text-center">
                     <span className="text-secondary text-xs font-weight-bold">{user.role}</span>
+                  </td>
+                  <td className="align-middle text-center">
+                    <span className="text-secondary text-xs font-weight-bold">{postedAt(user.createdAt)}</span>
                   </td>
                   <td className="align-middle text-center">
                     <Link to="/admin/edit-user" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
