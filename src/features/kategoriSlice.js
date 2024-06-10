@@ -99,7 +99,7 @@ export const kategoriSlice = createSlice({
       state.message = action.payload;
     });
 
-    // Get kateogri by id
+    // Get kategori by id
     builder.addCase(getKategoriById.pending, (state) => {
       state.isLoading = true;
     });

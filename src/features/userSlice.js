@@ -120,7 +120,7 @@ export const userSlice = createSlice({
       state.message = action.payload;
     });
 
-    // Add kategori
+    // Add User
     builder.addCase(addUser.pending, (state) => {
       state.isLoading = true;
     });

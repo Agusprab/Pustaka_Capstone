@@ -100,44 +100,7 @@ function InputPeminjaman() {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  Tahun Terbit
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-            </div>
 
-            <div className="col-lg-6">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  Kategori
-                </label>
-                <select
-                  className="form-select"
-                  aria-label="Default select example"
-                >
-                  <option selected>--Select--</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-            </div>
-          </div>
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
