@@ -102,7 +102,7 @@ function InputUser({ addUserhandle }) {
                   </div>
                 </div> */}
 
-              <div className="col-lg-6">
+              <div className="col-lg-12">
                 <div className="p-2">
                   <label htmlFor="jenisKelaminInput" className="form-label">
                     JENIS KELAMIN

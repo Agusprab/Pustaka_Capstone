@@ -37,7 +37,7 @@ function AdminPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
-  const { kategori, isLoadingKategori } = useSelector((state) => state.kategori);
+  const { kategori } = useSelector((state) => state.kategori);
   const { book } = useSelector((state) => state.book);
   const { users } = useSelector((state) => state.users);
 
@@ -48,9 +48,9 @@ function AdminPage() {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(getAllKategori());
-  // }, [kategori]);
+  useEffect(() => {
+    dispatch(getAllKategori());
+  }, [kategori]);
 
   useEffect(() => {
     if (isError) {
@@ -110,13 +110,12 @@ function AdminPage() {
                 <ListKategori
                   kategori={kategori}
                   deleteKategori={deleteKategori}
-                  isLoadingKategori={isLoadingKategori}
                 />
               )}
             />
             <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
 
-            <Route path="/detail-profile" element={<DetailProfile />} />
+            <Route path="/detail-profile" element={<DetailProfile user={user} />} />
             <Route
               path="/add-book"
               element={<InputBook kategori={kategori} />}
