@@ -19,7 +19,8 @@ function LoginInput() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(LoginUser({ email, password }));
+    const data = { email, password };
+    dispatch(LoginUser(data));
   };
 
   useEffect(() => {
