@@ -4,6 +4,7 @@ import authReducer from '../features/authSlice';
 import kategoriReducer from '../features/kategoriSlice';
 import bookReducer from '../features/bookSlice';
 import userReducer from '../features/userSlice';
+import peminjamanReducer from '../features/peminjamanSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     kategori: kategoriReducer,
     book: bookReducer,
     users: userReducer,
+    peminjaman: peminjamanReducer,
   },
 });
 
