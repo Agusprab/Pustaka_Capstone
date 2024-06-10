@@ -38,7 +38,7 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
     }
 });
 
-export const addBook = createAsyncThunk('addPeminjaman', async (newInput, thunkAPI) => {
+export const addPeminjaman = createAsyncThunk('addPeminjaman', async (newInput, thunkAPI) => {
     try {
         const response = await axios.post(`${API_URL}/peminjaman`, {
             judul: newInput.judul,
@@ -93,15 +93,15 @@ export const peminjamanSlice = createSlice({
         reset: (state) => initialState,
     },
     extraReducers: (builder) => {
-        builder.addCase(getAllKategori.pending, (state) => {
+        builder.addCase(getAllPeminjaman.pending, (state) => {
             state.isLoading = true;
         });
-        builder.addCase(getAllKategori.fulfilled, (state, action) => {
+        builder.addCase(getAllPeminjaman.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
-            state.book = action.payload;
+            state.peminjaman = action.payload;
         });
-        builder.addCase(getAllKategori.rejected, (state, action) => {
+        builder.addCase(getAllPeminjaman.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
