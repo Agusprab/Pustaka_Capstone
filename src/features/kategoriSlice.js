@@ -10,7 +10,7 @@ const initialState = {
   kategori: null,
   isError: false,
   isSuccess: false,
-  isLoading: false,
+  isLoadingKategori: false,
   message: '',
 };
 
@@ -86,75 +86,75 @@ export const kategoriSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllKategori.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingKategori = true;
     });
     builder.addCase(getAllKategori.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isSuccess = true;
       state.kategori = action.payload;
     });
     builder.addCase(getAllKategori.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(getKategoriById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingKategori = true;
     });
     builder.addCase(getKategoriById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isSuccess = true;
       state.kategori = action.payload;
     });
     builder.addCase(getKategoriById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Add kategori
     builder.addCase(addKategori.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingKategori = true;
     });
     builder.addCase(addKategori.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(addKategori.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(deleteKategoriById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingKategori = true;
     });
     builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(deleteKategoriById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Update kategori
     builder.addCase(updateKategoriById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingKategori = true;
     });
     builder.addCase(updateKategoriById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(updateKategoriById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingKategori = false;
       state.isError = true;
       state.message = action.payload;
     });

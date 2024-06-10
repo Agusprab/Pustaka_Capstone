@@ -115,7 +115,7 @@ function AdminPage() {
             />
             <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
 
-            <Route path="/detail-profile" element={<DetailProfile />} />
+            <Route path="/detail-profile" element={<DetailProfile user={user} />} />
             <Route
               path="/add-book"
               element={<InputBook kategori={kategori} />}
