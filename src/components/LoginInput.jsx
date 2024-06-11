@@ -25,7 +25,11 @@ function LoginInput() {
 
   useEffect(() => {
     if (user || isSuccess) {
-      navigate('/admin');
+      if (user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/user');
+      }
     }
     dispatch(reset());
   }, [user, isSuccess, navigate, dispatch]);

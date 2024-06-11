@@ -50,7 +50,7 @@ function AdminPage() {
     dispatch(getAllUsers());
     dispatch(getAllPeminjaman());
   }, [dispatch]);
-  // console.log(peminjaman);
+
   useEffect(() => {
     dispatch(getAllKategori());
   }, [kategori]);
@@ -109,7 +109,7 @@ function AdminPage() {
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
-      <Aside user={user} />
+      <Aside users={users} />
       <main className="main-content position-relative border-radius-lg ">
         <Navbar isNavbarOpen={isNavbarOpen} user={user} />
         <div className="container-fluid py-4">
