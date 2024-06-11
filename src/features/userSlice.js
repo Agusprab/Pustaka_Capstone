@@ -58,9 +58,9 @@ export const addUser = createAsyncThunk('addUser', async (newUser, thunkAPI) => 
   }
 });
 
-export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (uuid, thunkAPI) => {
+export const deleteUserById = createAsyncThunk('deleteUserById', async (uuid, thunkAPI) => {
   try {
-    const response = await axios.delete(`${API_URL}/kategori/${uuid}`);
+    const response = await axios.delete(`${API_URL}/users/${uuid}`);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -136,15 +136,15 @@ export const userSlice = createSlice({
     });
 
     // Get kateogri by id
-    builder.addCase(deleteKategoriById.pending, (state) => {
+    builder.addCase(deleteUserById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
+    builder.addCase(deleteUserById.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(deleteKategoriById.rejected, (state, action) => {
+    builder.addCase(deleteUserById.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;

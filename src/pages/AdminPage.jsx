@@ -30,7 +30,7 @@ import EditBook from "../components/Dashboard/EditBook";
 import EditKategori from "../components/Dashboard/EditKategori";
 import EditUser from "../components/Dashboard/EditUser";
 import { getAllBook } from "../features/bookSlice";
-import { getAllUsers, addUser } from "../features/userSlice";
+import { getAllUsers, addUser, deleteUserById } from "../features/userSlice";
 import { getAllPeminjaman, addPeminjaman } from "../features/peminjamanSlice";
 function AdminPage() {
   const [navbar, setNavbar] = useState("");
@@ -49,7 +49,7 @@ function AdminPage() {
     dispatch(getAllUsers());
     dispatch(getAllPeminjaman());
   }, [dispatch]);
-  console.log(peminjaman);
+  // console.log(peminjaman);
   useEffect(() => {
     dispatch(getAllKategori());
   }, [kategori]);
@@ -86,6 +86,12 @@ function AdminPage() {
     }
   };
 
+  const deleteUser = (uuid) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      dispatch(deleteUserById(uuid));
+    }
+  };
+
   const editKategori = (uuid, name) => {
     const input = {
       uuid,
@@ -105,7 +111,7 @@ function AdminPage() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/list-book" element={<ListBook book={book} />} />
-            <Route path="/list-user" element={<ListUser users={users} />} />
+            <Route path="/list-user" element={<ListUser users={users} deleteUser={deleteUser} />} />
             <Route
               path="/list-kategori"
               element={
