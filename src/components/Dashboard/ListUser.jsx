@@ -84,7 +84,7 @@ function ListUser({ users, deleteUser }) {
                     <span className="text-secondary text-xs font-weight-bold">{postedAt(user.createdAt)}</span>
                   </td>
                   <td className="align-middle text-center">
-                    <Link to="/admin/edit-user" className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    <Link to={`/admin/edit-user/${user.uuid}`} className="text-secondary font-weight-bold text-xs">
                       Edit
                     </Link>
                     |
