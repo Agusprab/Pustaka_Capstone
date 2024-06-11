@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { postedAt } from '../../utils/index';
 
-function ListUser({ users }) {
+function ListUser({ users, deleteUser }) {
   return (
     <div className="row">
       <div className="col-12">
@@ -88,9 +88,9 @@ function ListUser({ users }) {
                       Edit
                     </Link>
                     |
-                    <a href="" className="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    <Link href="" className="text-danger font-weight-bold text-xs" onClick={() => deleteUser(user.uuid)}>
                       Delete
-                    </a>
+                    </Link>
                   </td>
                   </tr>
                 ))}
@@ -107,6 +107,7 @@ function ListUser({ users }) {
 ListUser.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   users: PropTypes.array,
+  deleteUser: PropTypes.func,
 };
 
 export default ListUser;
