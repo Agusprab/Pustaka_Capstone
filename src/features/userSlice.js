@@ -26,9 +26,9 @@ export const getAllUsers = createAsyncThunk('getUser', async (_, thunkAPI) => {
   }
 });
 
-export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, thunkAPI) => {
+export const getUserById = createAsyncThunk('getUserById', async (uuid, thunkAPI) => {
   try {
-    const response = await axios.get(`${API_URL}/kategori/${uuid}`);
+    const response = await axios.get(`${API_URL}/users/${uuid}`);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -70,10 +70,17 @@ export const deleteUserById = createAsyncThunk('deleteUserById', async (uuid, th
   }
 });
 
-export const updateKategoriById = createAsyncThunk('updateKategoriById', async (input, thunkAPI) => {
+export const updateUserById = createAsyncThunk('updateUserById', async (newUser, thunkAPI) => {
   try {
-    const response = await axios.patch(`${API_URL}/kategori/${input.uuid}`, {
-      name: input.name,
+    const response = await axios.patch(`${API_URL}/users/${newUser.uuid}`, {
+      name: newUser.name,
+      email: newUser.email,
+      password: newUser.password,
+      confPassword: newUser.password,
+      jenisKelamin: newUser.jenisKelamin,
+      alamat: newUser.alamat,
+      noTlp: newUser.noTlp,
+      role: newUser.role,
     });
     return response.data;
   } catch (error) {
@@ -106,15 +113,15 @@ export const userSlice = createSlice({
     });
 
     // Get kateogri by id
-    builder.addCase(getKategoriById.pending, (state) => {
+    builder.addCase(getUserById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getKategoriById.fulfilled, (state, action) => {
+    builder.addCase(getUserById.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
-      state.kategori = action.payload;
+      state.users = action.payload;
     });
-    builder.addCase(getKategoriById.rejected, (state, action) => {
+    builder.addCase(getUserById.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;
@@ -151,15 +158,15 @@ export const userSlice = createSlice({
     });
 
     // Update kategori
-    builder.addCase(updateKategoriById.pending, (state) => {
+    builder.addCase(updateUserById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(updateKategoriById.fulfilled, (state, action) => {
+    builder.addCase(updateUserById.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(updateKategoriById.rejected, (state, action) => {
+    builder.addCase(updateUserById.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;

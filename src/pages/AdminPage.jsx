@@ -30,7 +30,9 @@ import EditBook from '../components/Dashboard/EditBook';
 import EditKategori from '../components/Dashboard/EditKategori';
 import EditUser from '../components/Dashboard/EditUser';
 import { getAllBook } from '../features/bookSlice';
-import { getAllUsers, addUser, deleteUserById } from '../features/userSlice';
+import {
+  getAllUsers, addUser, deleteUserById, updateUserById,
+} from '../features/userSlice';
 import { getAllPeminjaman, addPeminjaman } from '../features/peminjamanSlice';
 
 function AdminPage() {
@@ -106,6 +108,11 @@ function AdminPage() {
     navigate('/admin/list-kategori');
   };
 
+  const editUser = (newUser) => {
+    dispatch(updateUserById(newUser));
+    navigate('/admin/list-user');
+  };
+
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
@@ -142,7 +149,7 @@ function AdminPage() {
               path="/add-user"
               element={<InputUser addUserhandle={addUserhandle} />}
             />
-            <Route path="/edit-user" element={<EditUser />} />
+            <Route path="/edit-user/:uuid" element={<EditUser users={users} editUser={editUser} />} />
             <Route
               path="/add-kategori"
               element={<InputKategori addKategorihandle={addKategorihandle} />}
