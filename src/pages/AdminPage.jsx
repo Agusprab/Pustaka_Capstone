@@ -29,6 +29,7 @@ import InputPeminjaman from "../components/Dashboard/InputPeminjaman";
 import EditBook from "../components/Dashboard/EditBook";
 import EditKategori from "../components/Dashboard/EditKategori";
 import EditUser from "../components/Dashboard/EditUser";
+import EditPeminjaman from "../components/Dashboard/EditPeminjaman";
 import { getAllBook } from "../features/bookSlice";
 import { getAllUsers, addUser } from "../features/userSlice";
 import { getAllPeminjaman, addPeminjaman } from "../features/peminjamanSlice";
@@ -49,7 +50,7 @@ function AdminPage() {
     dispatch(getAllUsers());
     dispatch(getAllPeminjaman());
   }, [dispatch]);
-  console.log(peminjaman);
+  // console.log(peminjaman);
   useEffect(() => {
     dispatch(getAllKategori());
   }, [kategori]);
@@ -78,7 +79,10 @@ function AdminPage() {
     dispatch(addUser(newUser));
     navigate("/admin/list-user");
   };
-
+  const addPeminjaman = (newInput) => {
+    dispatch(addPeminjaman(newInput));
+    navigate("/admin/list-peminjaman-buku");
+  };
   // eslint-disable-next-line no-shadow
   const deleteKategori = (uuid) => {
     if (window.confirm("Are you sure you want to delete this category?")) {
@@ -94,6 +98,15 @@ function AdminPage() {
     dispatch(updateKategoriById(input));
     navigate("/admin/list-kategori");
   };
+
+  // const editPeminjaman = (uuid, name) => {
+  //   const input = {
+  //     uuid,
+  //     name,
+  //   };
+  //   dispatch(updateKategoriById(input));
+  //   navigate("/admin/list-peminjaman");
+  // };
 
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
@@ -115,7 +128,10 @@ function AdminPage() {
                 />
               }
             />
-            <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
+            <Route
+              path="/list-peminjaman-buku"
+              element={<ListPeminjaman peminjaman={peminjaman} />}
+            />
 
             <Route
               path="/detail-profile"
@@ -141,7 +157,16 @@ function AdminPage() {
                 <EditKategori kategori={kategori} editKategori={editKategori} />
               }
             />
-            <Route path="/add-peminjaman-buku" element={<InputPeminjaman />} />
+            <Route
+              path="/add-peminjaman-buku"
+              element={
+                <InputPeminjaman
+                  peminjaman={peminjaman}
+                  addPeminjaman={addPeminjaman}
+                />
+              }
+            />
+            <Route path="/edit-peminjaman" element={<EditPeminjaman />} />
           </Routes>
           <Footer />
         </div>

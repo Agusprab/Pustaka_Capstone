@@ -20,4 +20,23 @@ function postedAt(date) {
   return 'just now';
 }
 
-export { postedAt };
+function convertToIndonesianDate(isoDateString) {
+  const months = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+
+  // Create a new Date object from the ISO date string
+  const date = new Date(isoDateString);
+
+  // Get the day, month, and year from the Date object
+  const day = date.getDate();
+  const month = date.getMonth(); // Note: getMonth() returns 0-based month index
+  const year = date.getFullYear();
+
+  // Construct the date string in Indonesian format
+  const indonesianDate = `${day.toString().padStart(2, '0')} ${months[month]} ${year}`;
+
+  return indonesianDate;
+}
+export { postedAt, convertToIndonesianDate };

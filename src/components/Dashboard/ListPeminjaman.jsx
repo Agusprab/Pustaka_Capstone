@@ -1,15 +1,20 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
 import { Link } from "react-router-dom";
+import propTypes from "prop-types";
+import { convertToIndonesianDate } from "../../utils";
 
-function ListPeminjaman() {
+function ListPeminjaman({ peminjaman }) {
   return (
     <div className="row">
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Authors table</h6>
+            <h6>Peminjaman table</h6>
             <Link className="btn btn-primary" to="/admin/add-peminjaman-buku">
               <i className="fa fa-plus" aria-hidden="true" />
               &nbsp; Tambah Peminjaman
@@ -22,201 +27,78 @@ function ListPeminjaman() {
                 <thead>
                   <tr>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Created At
+                      Nama User
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      ID Peminjaman
+                      Judul Buku
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      ID User
+                      Tanggal Pinjam
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      ID Book
-                    </th>
-                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      tanggal pinjam
-                    </th>
-                    <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      tanggal kembali
+                      Tanggal Kembali
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                       Status
                     </th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Employed
+                      Action
                     </th>
                     <th className="text-secondary opacity-7" />
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        PMJ123456
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        USR123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        BKU123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        PMJ123456
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        USR123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        BKU123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        PMJ123456
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        USR123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        BKU123
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <span className="text-secondary text-xs font-weight-bold">
-                        23/04/24
-                      </span>
-                    </td>
-                    <td className="align-middle text-center text-sm">
-                      <span className="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td className="align-middle text-center">
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                      |
-                      <a
-                        href=""
-                        className="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
+                  {peminjaman &&
+                    peminjaman.map((peminjaman) => (
+                      <tr key={peminjaman.uuid}>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">
+                            {peminjaman.user.name}
+                          </span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">
+                            {peminjaman.book.judul}
+                          </span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">
+                            {convertToIndonesianDate(peminjaman.tanggal_pinjam)}
+                          </span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">
+                            {convertToIndonesianDate(
+                              peminjaman.tanggal_kembali
+                            )}
+                          </span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">
+                            {peminjaman.status}
+                          </span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <Link
+                            to="/admin/edit-peminjaman"
+                            className="text-secondary font-weight-bold text-xs"
+                            data-toggle="tooltip"
+                            data-original-title="Edit Peminjaman"
+                          >
+                            Edit
+                          </Link>
+                          |
+                          <a
+                            href=""
+                            className="text-danger font-weight-bold text-xs"
+                            data-toggle="tooltip"
+                            data-original-title="Delete Peminjaman"
+                          >
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -226,5 +108,5 @@ function ListPeminjaman() {
     </div>
   );
 }
-
+ListPeminjaman.propTypes = { peminjaman: propTypes.array };
 export default ListPeminjaman;
