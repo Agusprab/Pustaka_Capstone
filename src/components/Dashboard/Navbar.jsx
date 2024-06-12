@@ -38,6 +38,13 @@ function Navbar({ isNavbarOpen, user }) {
   const namePagesHandler = () => {
     // Fungsi ini digunakan untuk menentukan page mana yang sedang aktif
     const filterLocation = location.pathname.split('/admin/')[1];
+    const filterLocationUser = location.pathname.split('/user/')[1];
+    if (filterLocationUser === 'list-peminjaman-buku') {
+      return 'List Peminjaman Buku';
+    }
+    if (!filterLocationUser) {
+      return 'Cari Buku';
+    }
     if (!filterLocation) {
       return 'Dashboard';
     }

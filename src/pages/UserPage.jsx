@@ -6,58 +6,32 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe } from '../features/authSlice';
-import {
-  getAllKategori,
-  addKategori,
-  deleteKategoriById,
-  updateKategoriById,
-} from '../features/kategoriSlice';
 
 import Aside from '../components/Dashboard/Aside';
 import Navbar from '../components/Dashboard/Navbar';
-import Dashboard from '../components/Dashboard/Dashboard';
-import ListBook from '../components/Dashboard/ListBook';
-import ListUser from '../components/Dashboard/ListUser';
+import Dashboard from '../components/UserDashboard/Dashboard';
 import DetailProfile from '../components/Dashboard/DetailProfile';
 import Footer from '../components/Dashboard/Footer';
-import InputBook from '../components/Dashboard/InputBook';
-import InputUser from '../components/Dashboard/InputUser';
-import ListKategori from '../components/Dashboard/ListKategori';
-import InputKategori from '../components/Dashboard/InputKategori';
 import ListPeminjaman from '../components/Dashboard/ListPeminjaman';
-import InputPeminjaman from '../components/Dashboard/InputPeminjaman';
-import EditBook from '../components/Dashboard/EditBook';
-import EditKategori from '../components/Dashboard/EditKategori';
-import EditUser from '../components/Dashboard/EditUser';
+import { getAllPeminjaman } from '../features/peminjamanSlice';
+import { getAllKategori} from '../features/kategoriSlice';
 import { getAllBook } from '../features/bookSlice';
-import { getAllUsers, addUser, deleteUserById } from '../features/userSlice';
-import { getAllPeminjaman, addPeminjaman } from '../features/peminjamanSlice';
 
-function AdminPage() {
+function UserPage() {
   const [navbar, setNavbar] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
-  const { kategori, isLoadingKategori } = useSelector((state) => state.kategori);
-  const { book } = useSelector((state) => state.book);
-  const { users } = useSelector((state) => state.users);
   const { peminjaman } = useSelector((state) => state.peminjaman);
-
+  const { kategori } = useSelector((state) => state.kategori);
+  const { book } = useSelector((state) => state.book);
+  
   useEffect(() => {
     dispatch(getMe());
+    dispatch(getAllPeminjaman());
     dispatch(getAllKategori());
     dispatch(getAllBook());
-    dispatch(getAllUsers());
-    dispatch(getAllPeminjaman());
   }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getAllKategori());
-  }, [kategori]);
-
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [users]);
 
   useEffect(() => {
     if (isError) {
@@ -74,86 +48,22 @@ function AdminPage() {
     }
   };
 
-  const addKategorihandle = (name) => {
-    dispatch(addKategori(name));
-    navigate('/admin/list-kategori');
-  };
-
-  const addUserhandle = (newUser) => {
-    dispatch(addUser(newUser));
-    navigate('/admin/list-user');
-  };
-
-  // eslint-disable-next-line no-shadow
-  const deleteKategori = (uuid) => {
-    if (window.confirm('Are you sure you want to delete this category?')) {
-      dispatch(deleteKategoriById(uuid));
-    }
-  };
-
-  const deleteUser = (uuid) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
-      dispatch(deleteUserById(uuid));
-    }
-  };
-
-  const editKategori = (uuid, name) => {
-    const input = {
-      uuid,
-      name,
-    };
-    dispatch(updateKategoriById(input));
-    navigate('/admin/list-kategori');
-  };
-
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
-      <Aside users={users} />
+      <Aside user={user} />
       <main className="main-content position-relative border-radius-lg ">
         <Navbar isNavbarOpen={isNavbarOpen} user={user} />
         <div className="container-fluid py-4">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/list-book" element={<ListBook book={book} />} />
-            <Route path="/list-user" element={<ListUser users={users} deleteUser={deleteUser} />} />
-            <Route
-              path="/list-kategori"
-              element={(
-                <ListKategori
-                  kategori={kategori}
-                  deleteKategori={deleteKategori}
-                  isLoadingKategori={isLoadingKategori}
-                />
-              )}
-            />
+            <Route path="/" element={<Dashboard kategori={kategori} book={book} />} />
+
             <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
 
             <Route
               path="/detail-profile"
               element={<DetailProfile user={user} />}
             />
-            <Route
-              path="/add-book"
-              element={<InputBook kategori={kategori} />}
-            />
-            <Route path="/edit-book" element={<EditBook />} />
-            <Route
-              path="/add-user"
-              element={<InputUser addUserhandle={addUserhandle} />}
-            />
-            <Route path="/edit-user" element={<EditUser />} />
-            <Route
-              path="/add-kategori"
-              element={<InputKategori addKategorihandle={addKategorihandle} />}
-            />
-            <Route
-              path="/edit-kategori/:uuid"
-              element={
-                <EditKategori kategori={kategori} editKategori={editKategori} />
-              }
-            />
-            <Route path="/add-peminjaman-buku" element={<InputPeminjaman />} />
           </Routes>
           <Footer />
         </div>
@@ -162,4 +72,4 @@ function AdminPage() {
   );
 }
 
-export default AdminPage;
+export default UserPage;
