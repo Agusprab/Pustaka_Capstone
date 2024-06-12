@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
@@ -7,7 +8,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { postedAt } from '../../utils/index';
 
-function ListUser({ users, deleteUser }) {
+function ListUser({ users, deleteUser, isLoading }) {
   return (
     <div className="row">
       <div className="col-12">
@@ -94,6 +95,27 @@ function ListUser({ users, deleteUser }) {
                   </td>
                   </tr>
                 ))}
+                {!users && (
+                    <tr>
+                      <td colSpan="9" className="text-center">
+                        <div className="spinner-border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+
+                )}
+                  {/* ini berguna ketika ada perubahan di  */}
+                  {!isLoading && (
+                  <tr>
+                    <td colSpan="9" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  )}
                 </tbody>
               </table>
             </div>

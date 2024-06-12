@@ -42,7 +42,7 @@ function AdminPage() {
   const { isError, user } = useSelector((state) => state.auth);
   const { kategori, isLoadingKategori } = useSelector((state) => state.kategori);
   const { book } = useSelector((state) => state.book);
-  const { users } = useSelector((state) => state.users);
+  const { users, isLoading } = useSelector((state) => state.users);
   const { peminjaman } = useSelector((state) => state.peminjaman);
 
   useEffect(() => {
@@ -123,7 +123,7 @@ function AdminPage() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/list-book" element={<ListBook book={book} />} />
-            <Route path="/list-user" element={<ListUser users={users} deleteUser={deleteUser} />} />
+            <Route path="/list-user" element={<ListUser users={users} deleteUser={deleteUser} isLoading={isLoading} />} />
             <Route
               path="/list-kategori"
               element={(
