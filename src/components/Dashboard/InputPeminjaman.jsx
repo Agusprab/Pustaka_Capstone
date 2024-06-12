@@ -6,7 +6,7 @@ function InputPeminjaman() {
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Form Add Peminjaman</h6>
+            <h5>Edit Peminjaman</h5>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2" />
@@ -17,13 +17,13 @@ function InputPeminjaman() {
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  ID Book
+                  NAMA USER
                 </label>
                 <input
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
+                  placeholder="User"
                 />
               </div>
             </div>
@@ -34,18 +34,17 @@ function InputPeminjaman() {
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  Judul Book
+                  JUDUL BUKU
                 </label>
                 <input
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
+                  placeholder="Judul"
                 />
               </div>
             </div>
           </div>
-
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
@@ -53,13 +52,13 @@ function InputPeminjaman() {
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  Penulis
+                  TANGGAL PINJAM
                 </label>
                 <input
-                  type="email"
+                  type="date"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
+                  placeholder="password"
                 />
               </div>
             </div>
@@ -70,37 +69,17 @@ function InputPeminjaman() {
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  Penerbit
+                  TANGGAL KEMBALI
                 </label>
                 <input
-                  type="email"
+                  type="date"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="name@example.com"
+                  placeholder="password"
                 />
               </div>
             </div>
           </div>
-
-          <div className="row">
-            <div className="col-12">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  Sinopsis
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-            </div>
-          </div>
-
           <div className="row">
             <div className="col-lg-6">
               <div className="p-2">
@@ -108,70 +87,23 @@ function InputPeminjaman() {
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  Tahun Terbit
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  Kategori
+                  STATUS
                 </label>
                 <select
                   className="form-select"
                   aria-label="Default select example"
                 >
                   <option selected>--Select--</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="1">Diajukan</option>
+                  <option value="2">Dipinjamkan</option>
+                  <option value="3">Selesai</option>
                 </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="p-2">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  QTY Buku
-                </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                  placeholder="name@example.com"
-                />
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="mb-3">
-                <label htmlFor="formFile" className="form-label">
-                  Default file input example
-                </label>
-                <input className="form-control" type="file" id="formFile" />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-12 p-4">
-              <button type="button" className="btn bg-gradient-primary">
-                Kirim
-              </button>
+              <button className="btn btn-primary">Simpan</button>
             </div>
           </div>
         </div>
