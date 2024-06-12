@@ -54,7 +54,7 @@ function EditPeminjaman() {
           <div className="col-lg-6">
             <div className="p-2">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Tanggal Kembali
+                TANGGAL KEMBALI
               </label>
               <input
                 type="date"
