@@ -59,9 +59,9 @@ export const addBook = createAsyncThunk('addBook', async (newBook, thunkAPI) => 
   }
 });
 
-export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (uuid, thunkAPI) => {
+export const deleteBookById = createAsyncThunk('deleteBookById', async (uuid, thunkAPI) => {
   try {
-    const response = await axios.delete(`${API_URL}/kategori/${uuid}`);
+    const response = await axios.delete(`${API_URL}/book/${uuid}`);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -71,10 +71,17 @@ export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (
   }
 });
 
-export const updateKategoriById = createAsyncThunk('updateKategoriById', async (input, thunkAPI) => {
+export const updateBookById = createAsyncThunk('updateBookById', async (newBook, thunkAPI) => {
   try {
-    const response = await axios.patch(`${API_URL}/kategori/${input.uuid}`, {
-      name: input.name,
+    const response = await axios.patch(`${API_URL}/book/${newBook.uuid}`, {
+      judul: newBook.judul,
+      penulis: newBook.penulis,
+      penerbit: newBook.penerbit,
+      cover: newBook.cover,
+      sinopsis: newBook.sinopsis,
+      tahun_terbit: newBook.tahun_terbit,
+      qty: newBook.qty,
+      kategoriId: newBook.kategoriId,
     });
     return response.data;
   } catch (error) {
@@ -138,30 +145,30 @@ export const bookSlice = createSlice({
     });
 
     // Get kateogri by id
-    builder.addCase(deleteKategoriById.pending, (state) => {
+    builder.addCase(deleteBookById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
+    builder.addCase(deleteBookById.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(deleteKategoriById.rejected, (state, action) => {
+    builder.addCase(deleteBookById.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Update kategori
-    builder.addCase(updateKategoriById.pending, (state) => {
+    builder.addCase(updateBookById.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(updateKategoriById.fulfilled, (state, action) => {
+    builder.addCase(updateBookById.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(updateKategoriById.rejected, (state, action) => {
+    builder.addCase(updateBookById.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
       state.message = action.payload;

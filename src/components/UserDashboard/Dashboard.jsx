@@ -42,11 +42,27 @@ function Dashboard({ kategori, book }) {
             {book && book.map((data) => (
               <div key={data.id} className="col-lg-4 col-md-6 col-12 mb-4">
                 <div className="card h-100" key={data.id}>
-                  <img src={data.cover} className="card-img-top img-fluid" alt="book" style={{ objectFit: 'cover', objectPosition: 'center', height: '200px', borderRadius: '5px', transition: 'transform .2s', ':hover': { transform: 'scale(0.9)' } }} />
+                  {book.cover ? (
+                    <img
+                      src={book.cover}
+                      alt="book"
+                      style={{
+                        objectFit: 'cover', objectPosition: 'center', height: '200px', borderRadius: '5px', transition: 'transform .2s', ':hover': { transform: 'scale(0.9)' },
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2F8104bc91-4265-4eb9-a7f7-6e1628211666?alt=media&token=395b55f6-4e7b-4c15-a827-9d0c6bf4d275"
+                      alt="book"
+                      style={{
+                        objectFit: 'cover', objectPosition: 'center', height: '200px', borderRadius: '5px', transition: 'transform .2s', ':hover': { transform: 'scale(0.9)' },
+                      }}
+                    />
+                  )}
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fs-3">{data.judul}</h5>
                     <div className="d-flex mt-auto">
-                      <p className="fs-6" style={{ fontSize: '12px' }}>{data.qty}</p>
+                      <p className="fs-" style={{ fontSize: '12px' }}>{data.qty}</p>
                     </div>
                     <div className="d-grid gap-2">
                       <button type="submit" className="btn primary-bg btn-primary text-white mt-auto">

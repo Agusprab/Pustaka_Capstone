@@ -35,16 +35,11 @@ function Navbar({ isNavbarOpen, user }) {
   };
 
   // eslint-disable-next-line consistent-return
-  const namePagesHandler = () => {
+  const namePagesHandler = (user) => {
     // Fungsi ini digunakan untuk menentukan page mana yang sedang aktif
+      
     const filterLocation = location.pathname.split('/admin/')[1];
-    const filterLocationUser = location.pathname.split('/user/')[1];
-    if (filterLocationUser === 'list-peminjaman-buku') {
-      return 'List Peminjaman Buku';
-    }
-    if (!filterLocationUser) {
-      return 'Cari Buku';
-    }
+
     if (!filterLocation) {
       return 'Dashboard';
     }
@@ -63,7 +58,6 @@ function Navbar({ isNavbarOpen, user }) {
     if (filterLocation === 'detail-profile') {
       return 'Detail Profile';
     }
-
     if (filterLocation === 'add-book') {
       return 'Add Book';
     }
@@ -81,6 +75,9 @@ function Navbar({ isNavbarOpen, user }) {
     }
     if (filterLocation.includes('edit-kategori')) {
       return 'Edit Kategori';
+    }
+    if (filterLocation.includes('edit-book')) {
+      return 'Edit Book';
     }
   };
 
