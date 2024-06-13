@@ -7,7 +7,7 @@
 import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 
-function ListBook({ book }) {
+function ListBook({ book, deleteBook }) {
   return (
     <div className="row">
       <div className="col-12">
@@ -62,7 +62,7 @@ function ListBook({ book }) {
                         </td>
                         <td className="align-middle text-center">
                           <span className="text-secondary text-xs font-weight-bold">
-                            <img src={book.cover} alt="" style={{ width: '50px' }} />
+                            {book.cover ? (<img src={book.cover} alt="" style={{ width: '50px' }} />) : (<img src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2F8104bc91-4265-4eb9-a7f7-6e1628211666?alt=media&token=395b55f6-4e7b-4c15-a827-9d0c6bf4d275" alt="" style={{ width: '50px' }} />)}
                           </span>
                         </td>
                         <td className="align-middle text-center">
@@ -77,7 +77,7 @@ function ListBook({ book }) {
                         </td>
                         <td className="align-middle text-center">
                           <Link
-                            to="/admin/edit-book"
+                            to={`/admin/edit-book/${book.uuid}`}
                             className="text-secondary font-weight-bold text-xs"
                             data-toggle="tooltip"
                             data-original-title="Edit user"
@@ -85,14 +85,7 @@ function ListBook({ book }) {
                             Edit
                           </Link>
                           |
-                          <a
-                            href=""
-                            className="text-danger font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Delete
-                          </a>
+                          <Link className="text-danger font-weight-bold text-xs" onClick={() => deleteBook(book.uuid)}>Delete</Link>
                         </td>
                       </tr>
                     ))}
@@ -105,5 +98,8 @@ function ListBook({ book }) {
     </div>
   );
 }
-ListBook.propTypes = { book: propTypes.array };
+ListBook.propTypes = {
+  book: propTypes.array,
+  deleteBook: propTypes.func,
+};
 export default ListBook;

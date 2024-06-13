@@ -1,7 +1,10 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAllKategori } from '../../features/kategoriSlice';
 
 function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
@@ -17,9 +20,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
   };
 
   const filteredKategori = kategori
-    ? kategori.filter((kat) =>
-        kat.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
+    ? kategori.filter((kat) => kat.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : [];
 
   return (
@@ -54,7 +55,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID Kategori</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kategori</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                    <th className="text-secondary opacity-7" />
+
                   </tr>
                 </thead>
                 <tbody>
@@ -82,7 +83,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
 
-                 )}
+                  )}
                   {/* ini berguna ketika ada perubahan di  */}
                   {!isLoadingKategori && (
                   <tr>
