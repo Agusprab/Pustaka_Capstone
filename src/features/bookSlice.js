@@ -38,17 +38,17 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
   }
 });
 
-export const addBook = createAsyncThunk('addBook', async (input, thunkAPI) => {
+export const addBook = createAsyncThunk('addBook', async (newBook, thunkAPI) => {
   try {
     const response = await axios.post(`${API_URL}/book`, {
-      judul: input.judul,
-      penulis: input.penulis,
-      penerbit: input.penerbit,
-      cover: input.cover,
-      sinopsis: input.sinposis,
-      tahun_terbit: input.tahun_terbit,
-      qty: input.qty,
-      kategoriId: input.kategoriId,
+      judul: newBook.judul,
+      penulis: newBook.penulis,
+      penerbit: newBook.penerbit,
+      cover: newBook.cover,
+      sinopsis: newBook.sinopsis,
+      tahun_terbit: newBook.tahun_terbit,
+      qty: newBook.qty,
+      kategoriId: newBook.kategoriId,
     });
     return response.data;
   } catch (error) {
