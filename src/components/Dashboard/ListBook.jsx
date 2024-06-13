@@ -62,7 +62,7 @@ function ListBook({ book }) {
                         </td>
                         <td className="align-middle text-center">
                           <span className="text-secondary text-xs font-weight-bold">
-                            <img src={book.cover} alt="" style={{width: '50px' }} />
+                            <img src={book.cover} alt="" style={{ width: '50px' }} />
                           </span>
                         </td>
                         <td className="align-middle text-center">

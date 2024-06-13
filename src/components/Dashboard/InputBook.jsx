@@ -12,7 +12,7 @@ import useInput from '../../hooks/useInput';
 
 function InputBook({ kategori, addNewBook }) {
   if (kategori) {
-    const { book } = useSelector((state) => state.book);
+    const { book, isError, message } = useSelector((state) => state.book);
     const getLastId = book && book.length > 0 ? book[book.length - 1].id + 1 : 0;
     const [judul, setJudul] = useInput('');
     const [cover, setCover] = useState('');
@@ -28,10 +28,15 @@ function InputBook({ kategori, addNewBook }) {
         judul, penulis, penerbit, sinopsis, tahun_terbit, qty, kategoriId,
       };
 
-      const imgRef = ref(imageDB, `images/${uuidv4()}`);
-      await uploadBytes(imgRef, cover);
-      const url = await getDownloadURL(imgRef);
-      newBook.cover = url;
+      if (!cover) {
+        newBook.cover = 'https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2F8104bc91-4265-4eb9-a7f7-6e1628211666?alt=media&token=395b55f6-4e7b-4c15-a827-9d0c6bf4d275';
+      } else {
+        const imgRef = ref(imageDB, `images/${uuidv4()}`);
+        await uploadBytes(imgRef, cover);
+        const url = await getDownloadURL(imgRef);
+        newBook.cover = url;
+      }
+
       addNewBook(newBook);
     };
 
@@ -43,7 +48,12 @@ function InputBook({ kategori, addNewBook }) {
               <div className="card-header pb-0">
                 <h6>Form Add Book</h6>
               </div>
+              { isError && (
+              <p className="text-left text-danger">
 
+                { message }
+              </p>
+              )}
               <div className="card-body px-0 pt-0 pb-2" />
               <div className="row">
                 <div className="col-lg-6">
@@ -58,7 +68,6 @@ function InputBook({ kategori, addNewBook }) {
                       type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={getLastId}
                       disabled
                     />
@@ -77,9 +86,9 @@ function InputBook({ kategori, addNewBook }) {
                       type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={judul}
                       onChange={setJudul}
+                      required
                     />
                   </div>
                 </div>
@@ -98,9 +107,9 @@ function InputBook({ kategori, addNewBook }) {
                       type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={penulis}
                       onChange={setPenulis}
+                      required
                     />
                   </div>
                 </div>
@@ -117,9 +126,9 @@ function InputBook({ kategori, addNewBook }) {
                       type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={penerbit}
                       onChange={setPenerbit}
+                      required
                     />
                   </div>
                 </div>
@@ -138,9 +147,9 @@ function InputBook({ kategori, addNewBook }) {
                       type="text"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={sinopsis}
                       onChange={setSinopsis}
+                      required
                     />
                   </div>
                 </div>
@@ -155,12 +164,12 @@ function InputBook({ kategori, addNewBook }) {
                       Tahun Terbit
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={tahun_terbit}
                       onChange={setTahun_terbit}
+                      required
                     />
                   </div>
                 </div>
@@ -197,12 +206,12 @@ function InputBook({ kategori, addNewBook }) {
                       QTY Buku
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="exampleFormControlInput1"
-                      placeholder="name@example.com"
                       value={qty}
                       onChange={setQty}
+                      required
                     />
                   </div>
                 </div>
@@ -213,6 +222,7 @@ function InputBook({ kategori, addNewBook }) {
                       Default file input example
                     </label>
                     <input className="form-control" type="file" id="formFile" onChange={(e) => setCover(e.target.files[0])} />
+
                   </div>
                 </div>
               </div>
