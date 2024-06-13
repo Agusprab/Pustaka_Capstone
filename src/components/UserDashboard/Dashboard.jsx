@@ -38,19 +38,18 @@ function Dashboard({ kategori, book }) {
             </div>
           </div>
 
-          <div className="card-body p-3 pb-2 d-flex flex-wrap justify-content-between ">
+          <div className="card-body pb-2 d-flex flex-wrap justify-content-between row shadow">
             {book && book.map((data) => (
               <div key={data.id} className="col-lg-4 col-md-6 col-12 mb-4">
-                <div className="card" key={data.id}>
-                  <img src="book-image-url" className="card-img-top" alt="book" />
-                  <div className="card-body">
+                <div className="card h-100" key={data.id}>
+                  <img src={data.cover} className="card-img-top img-fluid" alt="book" style={{ objectFit: 'cover', objectPosition: 'center', height: '200px', borderRadius: '5px', transition: 'transform .2s', ':hover': { transform: 'scale(0.9)' } }} />
+                  <div className="card-body d-flex flex-column">
                     <h5 className="card-title fs-3">{data.judul}</h5>
-
-                    <div className="d-flex">
+                    <div className="d-flex mt-auto">
                       <p className="fs-6" style={{ fontSize: '12px' }}>{data.qty}</p>
                     </div>
                     <div className="d-grid gap-2">
-                      <button type="submit" className="btn primary-bg btn-primary text-white">
+                      <button type="submit" className="btn primary-bg btn-primary text-white mt-auto">
                         Check Detail Book
                       </button>
                     </div>

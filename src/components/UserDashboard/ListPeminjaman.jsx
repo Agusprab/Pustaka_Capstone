@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from 'react-router-dom';
 
 function ListPeminjaman() {
   return (
@@ -9,11 +8,7 @@ function ListPeminjaman() {
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Authors table</h6>
-            <Link className="btn btn-primary" to="/admin/add-peminjaman-buku">
-              <i className="fa fa-plus" aria-hidden="true" />
-              &nbsp; Tambah Peminjaman
-            </Link>
+            <h6>Riwayat Peminjaman</h6>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2">

@@ -12,7 +12,7 @@ import Navbar from '../components/Dashboard/Navbar';
 import Dashboard from '../components/UserDashboard/Dashboard';
 import DetailProfile from '../components/Dashboard/DetailProfile';
 import Footer from '../components/Dashboard/Footer';
-import ListPeminjaman from '../components/Dashboard/ListPeminjaman';
+import ListPeminjaman from '../components/UserDashboard/ListPeminjaman';
 import { getAllPeminjaman } from '../features/peminjamanSlice';
 import { getAllKategori} from '../features/kategoriSlice';
 import { getAllBook } from '../features/bookSlice';
