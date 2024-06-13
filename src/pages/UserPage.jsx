@@ -58,7 +58,7 @@ function UserPage() {
           <Routes>
             <Route path="/" element={<Dashboard kategori={kategori} book={book} />} />
 
-            <Route path="/list-peminjaman-buku" element={<ListPeminjaman />} />
+            <Route path="/list-peminjaman-buku" element={<ListPeminjaman user={user} peminjaman={peminjaman} />} />
 
             <Route
               path="/detail-profile"
