@@ -1,15 +1,9 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/require-default-props */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { postedAt } from '../../utils/index';
 
-function ListUser({ users = [], deleteUser, isLoading }) {
+function ListUser({ users = [], deleteUser, isLoadingUser }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -24,14 +18,13 @@ function ListUser({ users = [], deleteUser, isLoading }) {
         <div className="card mb-4">
           <div className="card-header pb-0">
             <div className="d-flex justify-content-between align-items-center">
-            <div>
-              <h6>Authors table test</h6>
-
+              <div>
+                <h6>Authors table test</h6>
                 <Link className="btn btn-primary" to="/admin/add-user">
                   <i className="fa fa-plus" aria-hidden="true" />
                   &nbsp; Tambah User
                 </Link>
-            </div>
+              </div>
               <input
                 type="text"
                 placeholder="Search by name"
@@ -40,7 +33,6 @@ function ListUser({ users = [], deleteUser, isLoading }) {
                 className="form-control"
                 style={{ display: 'inline', width: '200px', marginRight: '10px' }}
               />
-
             </div>
           </div>
           <div className="card-body px-0 pt-0 pb-2">
@@ -79,67 +71,62 @@ function ListUser({ users = [], deleteUser, isLoading }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredUsers.map((user) => (
-                    <tr key={user.uuid}>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.id}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.name}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.email}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.jenisKelamin}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.alamat}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.noTlp}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{user.role}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <span className="text-secondary text-xs font-weight-bold">{postedAt(user.createdAt)}</span>
-                      </td>
-                      <td className="align-middle text-center">
-                        <Link to={`/admin/edit-user/${user.uuid}`} className="text-secondary font-weight-bold text-xs">
-                          Edit
-                        </Link>
-                        |
-                        <Link
-                          href=""
-                          className="text-danger font-weight-bold text-xs"
-                          onClick={() => deleteUser(user.uuid)}
-                        >
-                          Delete
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-                 {!users && (
+                  {isLoadingUser ? (
                     <tr>
-                      <td colSpan="9" className="text-center">
+                      <td colSpan="10" className="text-center">
                         <div className="spinner-border" role="status">
                           <span className="visually-hidden">Loading...</span>
                         </div>
                       </td>
                     </tr>
-
-                 )}
-                  {/* ini berguna ketika ada perubahan di  */}
-                  {!isLoading && (
-                  <tr>
-                    <td colSpan="9" className="text-center">
-                      <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    </td>
-                  </tr>
-
+                  ) : filteredUsers.length > 0 ? (
+                    filteredUsers.map((user) => (
+                      <tr key={user.uuid}>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.id}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.name}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.email}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.jenisKelamin}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.alamat}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.noTlp}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{user.role}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <span className="text-secondary text-xs font-weight-bold">{postedAt(user.createdAt)}</span>
+                        </td>
+                        <td className="align-middle text-center">
+                          <Link to={`/admin/edit-user/${user.uuid}`} className="text-secondary font-weight-bold text-xs">
+                            Edit
+                          </Link>
+                          |
+                          <Link
+                            href=""
+                            className="text-danger font-weight-bold text-xs"
+                            onClick={() => deleteUser(user.uuid)}
+                          >
+                            Delete
+                          </Link>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="10" className="text-center">
+                        No users found
+                      </td>
+                    </tr>
                   )}
                 </tbody>
               </table>
@@ -152,10 +139,9 @@ function ListUser({ users = [], deleteUser, isLoading }) {
 }
 
 ListUser.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   users: PropTypes.array,
   deleteUser: PropTypes.func,
-  isLoading: PropTypes.bool,
+  isLoadingUser: PropTypes.bool,
 };
 
 export default ListUser;
