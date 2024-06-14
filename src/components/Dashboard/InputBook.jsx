@@ -25,12 +25,10 @@ function InputBook({ kategori, addNewBook }) {
     const inputBookHandler = async (e) => {
       e.preventDefault();
       const newBook = {
-        judul, penulis, penerbit, sinopsis, tahun_terbit, qty, kategoriId,
+        judul, penulis, penerbit, cover, sinopsis, tahun_terbit, qty, kategoriId,
       };
 
-      if (!cover) {
-        newBook.cover = 'https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2F8104bc91-4265-4eb9-a7f7-6e1628211666?alt=media&token=395b55f6-4e7b-4c15-a827-9d0c6bf4d275';
-      } else {
+      if (cover) {
         const imgRef = ref(imageDB, `images/${uuidv4()}`);
         await uploadBytes(imgRef, cover);
         const url = await getDownloadURL(imgRef);

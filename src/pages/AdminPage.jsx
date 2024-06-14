@@ -30,7 +30,12 @@ import EditBook from "../components/Dashboard/EditBook";
 import EditKategori from "../components/Dashboard/EditKategori";
 import EditUser from "../components/Dashboard/EditUser";
 import EditPeminjaman from "../components/Dashboard/EditPeminjaman";
-import { getAllBook, addBook } from "../features/bookSlice";
+import {
+  getAllBook,
+  addBook,
+  deleteBookById,
+  updateBookById,
+} from "../features/bookSlice";
 import {
   getAllUsers,
   addUser,
@@ -72,6 +77,10 @@ function AdminPage() {
   }, [users]);
 
   useEffect(() => {
+    dispatch(getAllBook());
+  }, [book]);
+
+  useEffect(() => {
     if (isError) {
       navigate("/login");
     }
@@ -91,6 +100,7 @@ function AdminPage() {
     dispatch(addBook(data));
     navigate("/admin/list-book");
   };
+
   const addKategorihandle = (name) => {
     dispatch(addKategori(name));
     navigate("/admin/list-kategori");
@@ -114,6 +124,12 @@ function AdminPage() {
   const deleteUser = (uuid) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       dispatch(deleteUserById(uuid));
+    }
+  };
+
+  const deleteBook = (uuid) => {
+    if (window.confirm("Are you sure you want to delete this book?")) {
+      dispatch(deleteBookById(uuid));
     }
   };
 
@@ -142,6 +158,11 @@ function AdminPage() {
     navigate("/admin/list-peminjaman-buku");
   };
 
+  const editBook = (newBook) => {
+    dispatch(updateBookById(newBook));
+    navigate("/admin/list-book");
+  };
+
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
@@ -151,7 +172,10 @@ function AdminPage() {
         <div className="container-fluid py-4">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/list-book" element={<ListBook book={book} />} />
+            <Route
+              path="/list-book"
+              element={<ListBook book={book} deleteBook={deleteBook} />}
+            />
             <Route
               path="/list-user"
               element={
@@ -192,7 +216,12 @@ function AdminPage() {
                 <InputBook kategori={kategori} addNewBook={addNewBook} />
               }
             />
-            <Route path="/edit-book" element={<EditBook />} />
+            <Route
+              path="/edit-book/:uuid"
+              element={
+                <EditBook book={book} kategori={kategori} editBook={editBook} />
+              }
+            />
             <Route
               path="/add-user"
               element={<InputUser addUserhandle={addUserhandle} />}
