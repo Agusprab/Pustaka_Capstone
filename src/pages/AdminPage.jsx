@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-unresolved */
@@ -39,7 +40,9 @@ import {
   deleteUserById,
   updateUserById,
 } from '../features/userSlice';
-import { getAllPeminjaman, addPeminjaman } from '../features/peminjamanSlice';
+import {
+  getAllPeminjaman, addPeminjaman, deletePeminjamanById, updatePeminjamanById,
+} from '../features/peminjamanSlice';
 
 function AdminPage() {
   const [navbar, setNavbar] = useState('');
@@ -69,9 +72,13 @@ function AdminPage() {
   //   dispatch(getAllUsers());
   // }, [users]);
 
-  // // useEffect(() => {
-  // //   dispatch(getAllBook());
-  // // }, [book]);
+  // useEffect(() => {
+  //   dispatch(getAllBook());
+  // }, [book]);
+
+  // useEffect(() => {
+  //   dispatch(getAllPeminjaman());
+  // }, [peminjaman]);
 
   useEffect(() => {
     if (isError) {
@@ -103,8 +110,8 @@ function AdminPage() {
     dispatch(addUser(newUser));
     navigate('/admin/list-user');
   };
-  const addNewPeminjaman = (newInput) => {
-    dispatch(addPeminjaman(newInput));
+  const addNewPeminjaman = (newPeminjaman) => {
+    dispatch(addPeminjaman(newPeminjaman));
     navigate('/admin/list-peminjaman-buku');
   };
   // eslint-disable-next-line no-shadow
@@ -123,6 +130,11 @@ function AdminPage() {
   const deleteBook = (uuid) => {
     if (window.confirm('Are you sure you want to delete this book?')) {
       dispatch(deleteBookById(uuid));
+    }
+  };
+  const deletePeminjaman = (uuid) => {
+    if (window.confirm('Are you sure you want to delete this book?')) {
+      dispatch(deletePeminjamanById(uuid));
     }
   };
 
@@ -144,7 +156,15 @@ function AdminPage() {
     dispatch(updateBookById(newBook));
     navigate('/admin/list-book');
   };
+  const editPeminjaman = (newPeminjaman) => {
+    dispatch(updatePeminjamanById(newPeminjaman));
+    navigate('/admin/list-peminjaman-buku');
+  };
 
+  const updateDetailProfile = (newUser) => {
+    dispatch(updateUserById(newUser));
+    navigate('/admin/detail-profile');
+  };
   return (
     <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
       <div className="min-height-300 bg-primary position-absolute w-100" />
@@ -177,12 +197,12 @@ function AdminPage() {
             />
             <Route
               path="/list-peminjaman-buku"
-              element={<ListPeminjaman peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} />}
+              element={<ListPeminjaman peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} deletePeminjaman={deletePeminjaman} />}
             />
 
             <Route
               path="/detail-profile"
-              element={<DetailProfile user={user} />}
+              element={<DetailProfile user={user} updateUser={updateDetailProfile} />}
             />
             <Route
               path="/add-book"
@@ -216,7 +236,7 @@ function AdminPage() {
                 />
               )}
             />
-            <Route path="/edit-peminjaman" element={<EditPeminjaman />} />
+            <Route path="/edit-peminjaman/:uuid" element={<EditPeminjaman editPeminjaman={editPeminjaman} peminjaman={peminjaman} />} />
           </Routes>
           <Footer />
         </div>

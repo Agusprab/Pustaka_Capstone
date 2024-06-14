@@ -209,7 +209,7 @@ function InputUser({ addUserhandle }) {
                         value={role}
                         onChange={setRole}
                       >
-
+                        <option value="" hidden>--Select--</option>
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                       </select>

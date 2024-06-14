@@ -41,15 +41,11 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
 export const addPeminjaman = createAsyncThunk('addPeminjaman', async (newInput, thunkAPI) => {
   try {
     const response = await axios.post(`${API_URL}/peminjaman`, {
-      judul: newInput.judul,
-      penulis: newInput.penulis,
-      penerbit: newInput.penerbit,
-      cover: newInput.cover,
-      sinopsis: newInput.sinposis,
-      tahun_terbit: newInput.tahun_terbit,
-      qty: newInput.qty,
-      kategoriId: newInput.kategoriId,
-      bukuId: newInput.bukuId,
+      tanggal_pinjam: newInput.tanggal_pinjam,
+      tanggal_kembali: newInput.tanggal_kembali,
+      status: newInput.status,
+      userId: newInput.userId,
+      bookId: newInput.bookId,
     });
     return response.data;
   } catch (error) {
@@ -60,9 +56,9 @@ export const addPeminjaman = createAsyncThunk('addPeminjaman', async (newInput, 
   }
 });
 
-export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (uuid, thunkAPI) => {
+export const deletePeminjamanById = createAsyncThunk('deletePeminjamanById', async (uuid, thunkAPI) => {
   try {
-    const response = await axios.delete(`${API_URL}/kategori/${uuid}`);
+    const response = await axios.delete(`${API_URL}/peminjaman/${uuid}`);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -72,10 +68,11 @@ export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (
   }
 });
 
-export const updateKategoriById = createAsyncThunk('updateKategoriById', async (input, thunkAPI) => {
+export const updatePeminjamanById = createAsyncThunk('updatePeminjamanById', async (input, thunkAPI) => {
   try {
-    const response = await axios.patch(`${API_URL}/kategori/${input.uuid}`, {
-      name: input.name,
+    const response = await axios.patch(`${API_URL}/peminjaman/${input.uuid}`, {
+      tanggal_kembali: input.tanggal_kembali,
+      status: input.status,
     });
     return response.data;
   } catch (error) {
@@ -139,30 +136,30 @@ export const peminjamanSlice = createSlice({
     });
 
     // Get kateogri by id
-    builder.addCase(deleteKategoriById.pending, (state) => {
+    builder.addCase(deletePeminjamanById.pending, (state) => {
       state.isLoadingPmj = true;
     });
-    builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
+    builder.addCase(deletePeminjamanById.fulfilled, (state, action) => {
       state.isLoadingPmj = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(deleteKategoriById.rejected, (state, action) => {
+    builder.addCase(deletePeminjamanById.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Update kategori
-    builder.addCase(updateKategoriById.pending, (state) => {
+    builder.addCase(updatePeminjamanById.pending, (state) => {
       state.isLoadingPmj = true;
     });
-    builder.addCase(updateKategoriById.fulfilled, (state, action) => {
+    builder.addCase(updatePeminjamanById.fulfilled, (state, action) => {
       state.isLoadingPmj = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
-    builder.addCase(updateKategoriById.rejected, (state, action) => {
+    builder.addCase(updatePeminjamanById.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
       state.message = action.payload;

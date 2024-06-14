@@ -1,3 +1,9 @@
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -71,7 +77,7 @@ function ListUser({ users = [], deleteUser, isLoadingUser }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {isLoadingUser ? (
+                  {!users ? (
                     <tr>
                       <td colSpan="10" className="text-center">
                         <div className="spinner-border" role="status">
@@ -127,6 +133,15 @@ function ListUser({ users = [], deleteUser, isLoadingUser }) {
                         No users found
                       </td>
                     </tr>
+                  )}
+                  {isLoadingUser && (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
                   )}
                 </tbody>
               </table>

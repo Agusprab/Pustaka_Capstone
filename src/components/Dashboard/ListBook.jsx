@@ -1,3 +1,9 @@
+/* eslint-disable no-shadow */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable max-len */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -62,16 +68,8 @@ function ListBook({ book = [], deleteBook, isLoadingBook }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {isLoadingBook && (
-                    <tr>
-                      <td colSpan="7" className="text-center">
-                        <div className="spinner-border" role="status">
-                          <span className="visually-hidden">Loading...</span>
-                        </div>
-                      </td>
-                    </tr>
-                  )}
-                  {!isLoadingBook && filteredBooks.map((book) => (
+
+                  {book && filteredBooks.map((book) => (
                     <tr key={book.uuid}>
                       <td className="align-middle text-center">
                         <span className="text-secondary text-xs font-weight-bold">
@@ -121,12 +119,22 @@ function ListBook({ book = [], deleteBook, isLoadingBook }) {
                       </td>
                     </tr>
                   ))}
-                  {!isLoadingBook && filteredBooks.length === 0 && (
+                  {filteredBooks.length === 0 && (
                     <tr>
                       <td colSpan="7" className="text-center">
                         No books found
                       </td>
                     </tr>
+                  )}
+
+                  {!isLoadingBook && (
+                  <tr>
+                    <td colSpan="7" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
                   )}
                 </tbody>
               </table>

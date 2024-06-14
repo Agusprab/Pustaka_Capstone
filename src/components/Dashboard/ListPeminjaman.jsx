@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
@@ -10,7 +13,7 @@ import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { convertToIndonesianDate } from '../../utils';
 
-function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
+function ListPeminjaman({ peminjaman = [], isLoadingPmj, deletePeminjaman }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -72,7 +75,7 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {isLoadingPmj ? (
+                  {!peminjaman ? (
                     <tr>
                       <td colSpan="7" className="text-center">
                         <div className="spinner-border" role="status">
@@ -102,17 +105,23 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
                             </td>
                             <td className="align-middle text-center">
                               <span className="text-secondary text-xs font-weight-bold">
-                                {convertToIndonesianDate(peminjaman.tanggal_kembali)}
+                                {peminjaman.tanggal_kembali && convertToIndonesianDate(peminjaman.tanggal_kembali) !== '01 Januari 1970' ? convertToIndonesianDate(peminjaman.tanggal_kembali) : '-'}
                               </span>
                             </td>
                             <td className="align-middle text-center">
-                              <span className="text-secondary text-xs font-weight-bold">
+                              <span className={`badge badge-sm ${
+                                peminjaman.status === 'Diajukan' ? 'bg-gradient-dark'
+                                  : peminjaman.status === 'Dipinjamkan' ? 'bg-gradient-primary'
+                                    : peminjaman.status === 'Selesai' ? 'bg-gradient-success'
+                                      : peminjaman.status === 'Ditolak' ? 'bg-gradient-danger' : ''
+                              }`}
+                              >
                                 {peminjaman.status}
                               </span>
                             </td>
                             <td className="align-middle text-center">
                               <Link
-                                to="/admin/edit-peminjaman"
+                                to={`/admin/edit-peminjaman/${peminjaman.uuid}`}
                                 className="text-secondary font-weight-bold text-xs"
                                 data-toggle="tooltip"
                                 data-original-title="Edit Peminjaman"
@@ -120,14 +129,7 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
                                 Edit
                               </Link>
                               |
-                              <a
-                                href=""
-                                className="text-danger font-weight-bold text-xs"
-                                data-toggle="tooltip"
-                                data-original-title="Delete Peminjaman"
-                              >
-                                Delete
-                              </a>
+                              <Link className="text-danger font-weight-bold text-xs" onClick={() => deletePeminjaman(peminjaman.uuid)}>Delete</Link>
                             </td>
                           </tr>
                         ))
@@ -139,6 +141,16 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
                         </tr>
                       )}
                     </>
+                  )}
+
+                  {!isLoadingPmj && (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
                   )}
                 </tbody>
               </table>
@@ -153,6 +165,7 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
 ListPeminjaman.propTypes = {
   peminjaman: propTypes.array,
   isLoadingPmj: propTypes.bool,
+  deletePeminjaman: propTypes.func,
 };
 
 export default ListPeminjaman;
