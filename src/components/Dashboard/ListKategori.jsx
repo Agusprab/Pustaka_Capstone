@@ -1,6 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/require-default-props */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -30,10 +27,10 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
           <div className="card-header pb-0">
             <div className="d-flex justify-content-between align-items-center">
               <div>
-                <h6>Authors table</h6>
+                <h6>Categories table</h6>
                 <Link className="btn btn-primary" to="/admin/add-kategori">
                   <i className="fa fa-plus" aria-hidden="true" />
-                  &nbsp; Tambah Kategori
+                  &nbsp; Add Category
                 </Link>
               </div>
               <input
@@ -55,11 +52,26 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID Kategori</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Kategori</th>
                     <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredKategori.map((kat) => (
+                  {isLoadingKategori && (
+                    <tr>
+                      <td colSpan="3" className="text-center">
+                        <div className="spinner-border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                  {!isLoadingKategori && filteredKategori.length === 0 && (
+                    <tr>
+                      <td colSpan="3" className="text-center">
+                        No categories found
+                      </td>
+                    </tr>
+                  )}
+                  {!isLoadingKategori && filteredKategori.map((kat) => (
                     <tr key={kat.uuid}>
                       <td className="align-middle text-center">
                         <span className="text-secondary text-xs font-weight-bold">{kat.id}</span>
@@ -74,27 +86,6 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
                   ))}
-                  {!filteredKategori && (
-                    <tr>
-                      <td colSpan="4" className="text-center">
-                        <div className="spinner-border" role="status">
-                          <span className="visually-hidden">Loading...</span>
-                        </div>
-                      </td>
-                    </tr>
-
-                  )}
-                  {/* ini berguna ketika ada perubahan di  */}
-                  {!isLoadingKategori && (
-                  <tr>
-                    <td colSpan="4" className="text-center">
-                      <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    </td>
-                  </tr>
-
-                  )}
                 </tbody>
               </table>
             </div>

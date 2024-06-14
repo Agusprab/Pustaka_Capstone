@@ -49,9 +49,9 @@ function AdminPage() {
   const { kategori, isLoadingKategori } = useSelector(
     (state) => state.kategori,
   );
-  const { book } = useSelector((state) => state.book);
-  const { users, isLoading } = useSelector((state) => state.users);
-  const { peminjaman } = useSelector((state) => state.peminjaman);
+  const { book, isLoadingBook } = useSelector((state) => state.book);
+  const { users, isLoadingUser } = useSelector((state) => state.users);
+  const { peminjaman, isLoadingPmj } = useSelector((state) => state.peminjaman);
 
   useEffect(() => {
     dispatch(getMe());
@@ -60,18 +60,18 @@ function AdminPage() {
     dispatch(getAllUsers());
     dispatch(getAllPeminjaman());
   }, [dispatch]);
-  // console.log(peminjaman);
-  useEffect(() => {
-    dispatch(getAllKategori());
-  }, [kategori]);
+  // // console.log(peminjaman);
+  // useEffect(() => {
+  //   dispatch(getAllKategori());
+  // }, [kategori]);
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [users]);
+  // useEffect(() => {
+  //   dispatch(getAllUsers());
+  // }, [users]);
 
-  useEffect(() => {
-    dispatch(getAllBook());
-  }, [book]);
+  // // useEffect(() => {
+  // //   dispatch(getAllBook());
+  // // }, [book]);
 
   useEffect(() => {
     if (isError) {
@@ -154,14 +154,14 @@ function AdminPage() {
         <div className="container-fluid py-4">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/list-book" element={<ListBook book={book} deleteBook={deleteBook} />} />
+            <Route path="/list-book" element={<ListBook book={book} deleteBook={deleteBook} isLoadingBook={isLoadingBook} />} />
             <Route
               path="/list-user"
               element={(
                 <ListUser
                   users={users}
                   deleteUser={deleteUser}
-                  isLoading={isLoading}
+                  isLoading={isLoadingUser}
                 />
               )}
             />
@@ -177,7 +177,7 @@ function AdminPage() {
             />
             <Route
               path="/list-peminjaman-buku"
-              element={<ListPeminjaman peminjaman={peminjaman} />}
+              element={<ListPeminjaman peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} />}
             />
 
             <Route

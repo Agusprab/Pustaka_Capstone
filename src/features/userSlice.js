@@ -10,7 +10,7 @@ const initialState = {
   user: null,
   isError: false,
   isSuccess: false,
-  isLoading: false,
+  isLoadingUser: false,
   message: '',
 };
 
@@ -99,75 +99,75 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllUsers.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingUser = true;
     });
     builder.addCase(getAllUsers.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isSuccess = true;
       state.users = action.payload;
     });
     builder.addCase(getAllUsers.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(getUserById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingUser = true;
     });
     builder.addCase(getUserById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isSuccess = true;
       state.users = action.payload;
     });
     builder.addCase(getUserById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Add User
     builder.addCase(addUser.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingUser = true;
     });
     builder.addCase(addUser.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(addUser.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(deleteUserById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingUser = true;
     });
     builder.addCase(deleteUserById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(deleteUserById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Update kategori
     builder.addCase(updateUserById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingUser = true;
     });
     builder.addCase(updateUserById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(updateUserById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingUser = false;
       state.isError = true;
       state.message = action.payload;
     });

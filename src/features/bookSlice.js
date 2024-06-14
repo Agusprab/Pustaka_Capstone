@@ -10,7 +10,7 @@ const initialState = {
   book: null,
   isError: false,
   isSuccess: false,
-  isLoading: false,
+  isLoadingBook: false,
   message: '',
 };
 
@@ -100,76 +100,76 @@ export const bookSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllBook.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     });
     builder.addCase(getAllBook.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isSuccess = true;
       state.book = action.payload;
     });
     builder.addCase(getAllBook.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(getKategoriById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     });
     builder.addCase(getKategoriById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isSuccess = true;
       state.kategori = action.payload;
       state.book = action.payload;
     });
     builder.addCase(getKategoriById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Add kategori
     builder.addCase(addBook.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     });
     builder.addCase(addBook.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(addBook.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Get kateogri by id
     builder.addCase(deleteBookById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     });
     builder.addCase(deleteBookById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(deleteBookById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isError = true;
       state.message = action.payload;
     });
 
     // Update kategori
     builder.addCase(updateBookById.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingBook = true;
     });
     builder.addCase(updateBookById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isSuccess = true;
       state.message = action.payload;
     });
     builder.addCase(updateBookById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isLoadingBook = false;
       state.isError = true;
       state.message = action.payload;
     });
