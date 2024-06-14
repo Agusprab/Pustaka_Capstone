@@ -79,6 +79,9 @@ function Navbar({ isNavbarOpen, user }) {
     if (filterLocation.includes('edit-book')) {
       return 'Edit Book';
     }
+    if (filterLocation.includes('edit-peminjaman')) {
+      return 'Edit Peminjaman';
+    }
   };
 
   return (

@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { getAllKategori } from '../../features/kategoriSlice';
 
 function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
-  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    dispatch(getAllKategori());
-  }, [dispatch]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -55,7 +51,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {isLoadingKategori && (
+                  {!kategori && (
                     <tr>
                       <td colSpan="3" className="text-center">
                         <div className="spinner-border" role="status">
@@ -64,6 +60,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
                   )}
+
                   {!isLoadingKategori && filteredKategori.length === 0 && (
                     <tr>
                       <td colSpan="3" className="text-center">
@@ -71,7 +68,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
                   )}
-                  {!isLoadingKategori && filteredKategori.map((kat) => (
+                  {kategori && filteredKategori.map((kat) => (
                     <tr key={kat.uuid}>
                       <td className="align-middle text-center">
                         <span className="text-secondary text-xs font-weight-bold">{kat.id}</span>
@@ -86,6 +83,15 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
                   ))}
+                  {!isLoadingKategori && (
+                  <tr>
+                    <td colSpan="3" className="text-center">
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
+                  )}
                 </tbody>
               </table>
             </div>

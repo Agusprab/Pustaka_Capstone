@@ -186,6 +186,7 @@ function InputBook({ kategori, addNewBook }) {
                       value={kategoriId}
                       onChange={setKategoriId}
                     >
+                      <option value="" hidden>--Select--</option>
                       {kategori && kategori.map((data) => (
                         <option key={data.id} value={data.id}>{data.name}</option>
                       ))}

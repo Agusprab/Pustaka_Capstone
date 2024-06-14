@@ -19,7 +19,15 @@ function DetailProfile({ user, updateUser }) {
     const updateProfile = (e) => {
       e.preventDefault();
       const newProfile = {
-        name, email, jenisKelamin, alamat, noTlp,
+        uuid: user.uuid,
+        name,
+        email,
+        jenisKelamin,
+        alamat,
+        noTlp,
+        password: '',
+        confPassword: '',
+        role: user.role,
       };
       updateUser(newProfile);
     };
@@ -42,20 +50,20 @@ function DetailProfile({ user, updateUser }) {
 
               <div className="text-center mt-4">
                 <h5>
-                  Mark Davis
-                  <span className="font-weight-light">, 35</span>
+                  {name}
+
                 </h5>
                 <div className="h6 font-weight-300">
                   <i className="ni location_pin mr-2" />
-                  Bucharest, Romania
+                  {user.role}
                 </div>
                 <div className="h6 mt-4">
                   <i className="ni business_briefcase-24 mr-2" />
-                  Solution Manager - Creative Tim Officer
+                  {noTlp}
                 </div>
                 <div>
                   <i className="ni education_hat mr-2" />
-                  University of Computer Science
+                  {alamat}
                 </div>
               </div>
             </div>
@@ -76,7 +84,7 @@ function DetailProfile({ user, updateUser }) {
                   <div className="col-md-12">
                     <div className="form-group">
                       <label htmlFor="example-text-input" className="form-control-label">Email address</label>
-                      <input className="form-control" type="email" value={email} onChange={setEmail} />
+                      <input className="form-control" type="email" value={email} onChange={setEmail} disabled />
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -137,7 +145,7 @@ function DetailProfile({ user, updateUser }) {
               <div className="col-4 col-lg-4 order-lg-2">
                 <div className="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
 
-                  <img src="../../public/img/team-2.jpg" className="rounded-circle img-fluid border border-2 border-white" />
+                  <img src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Fvecteezy_profile-user-icon-isolated-on-white-background-vector-eps10_.jpg?alt=media&token=d8d3d4bf-0c2f-430e-a5af-2701a8540b65" className="rounded-circle img-fluid border border-2 border-white" />
 
                 </div>
               </div>
@@ -147,20 +155,19 @@ function DetailProfile({ user, updateUser }) {
 
               <div className="text-center mt-4">
                 <h5>
-                  Mark Davis
-                  <span className="font-weight-light">, 35</span>
+                  {name}
                 </h5>
                 <div className="h6 font-weight-300">
                   <i className="ni location_pin mr-2" />
-                  Bucharest, Romania
+                  {user.role}
                 </div>
                 <div className="h6 mt-4">
                   <i className="ni business_briefcase-24 mr-2" />
-                  Solution Manager - Creative Tim Officer
+                  {noTlp}
                 </div>
                 <div>
                   <i className="ni education_hat mr-2" />
-                  University of Computer Science
+                  {alamat}
                 </div>
               </div>
             </div>
