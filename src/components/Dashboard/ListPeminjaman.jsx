@@ -1,25 +1,48 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from "react-router-dom";
-import propTypes from "prop-types";
-import { convertToIndonesianDate } from "../../utils";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
+import { convertToIndonesianDate } from '../../utils';
 
-function ListPeminjaman({ peminjaman, deletePeminjaman }) {
-  console.log(peminjaman);
+function ListPeminjaman({ peminjaman = [], isLoadingPmj }) {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPeminjaman = peminjaman
+    ? peminjaman.filter((peminjaman) => peminjaman.user.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    : [];
+
   return (
     <div className="row">
       <div className="col-12">
         <div className="card mb-4">
           <div className="card-header pb-0">
-            <h6>Peminjaman table</h6>
-            <Link className="btn btn-primary" to="/admin/add-peminjaman-buku">
-              <i className="fa fa-plus" aria-hidden="true" />
-              &nbsp; Tambah Peminjaman
-            </Link>
+            <div className="d-flex justify-content-between align-items-center">
+              <div>
+                <h6>Peminjaman Table</h6>
+                <Link className="btn btn-primary" to="/admin/add-peminjaman-buku">
+                  <i className="fa fa-plus" aria-hidden="true" />
+                  &nbsp; Tambah Peminjaman
+                </Link>
+              </div>
+              <input
+                type="text"
+                placeholder="Search by user name"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="form-control"
+                style={{ display: 'inline', width: '200px', marginRight: '10px' }}
+              />
+            </div>
           </div>
 
           <div className="card-body px-0 pt-0 pb-2">
@@ -49,68 +72,74 @@ function ListPeminjaman({ peminjaman, deletePeminjaman }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {peminjaman &&
-                    peminjaman.map((peminjaman) => (
-                      <tr key={peminjaman.uuid}>
-                        <td className="align-middle text-center">
-                          <span className="text-secondary text-xs font-weight-bold">
-                            {peminjaman.user.name}
-                          </span>
-                        </td>
-                        <td className="align-middle text-center">
-                          <span className="text-secondary text-xs font-weight-bold">
-                            {peminjaman.book.judul}
-                          </span>
-                        </td>
-                        <td className="align-middle text-center">
-                          <span className="text-secondary text-xs font-weight-bold">
-                            {convertToIndonesianDate(peminjaman.tanggal_pinjam)}
-                          </span>
-                        </td>
-                        <td className="align-middle text-center">
-                          <span className="text-secondary text-xs font-weight-bold">
-                            {convertToIndonesianDate(
-                              peminjaman.tanggal_kembali
-                            )}
-                          </span>
-                        </td>
-                        <td className="align-middle text-center">
-                          <span className="text-secondary text-xs font-weight-bold">
-                            {peminjaman.status}
-                          </span>
-                        </td>
-                        <td className="align-middle text-center">
-                          <Link
-                            to="/admin/edit-peminjaman"
-                            className="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit Peminjaman"
-                          >
-                            Edit
-                          </Link>
-                          |
-                          <Link
-                            href=""
-                            className="text-danger font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Delete Peminjaman"
-                            onClick={() => deletePeminjaman(user.uuid)}
-                          >
-                            Delete
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  {/* ini berguna ketika ada perubahan di
-                  {!isLoading && (
+                  {isLoadingPmj ? (
                     <tr>
-                      <td colSpan="9" className="text-center">
+                      <td colSpan="7" className="text-center">
                         <div className="spinner-border" role="status">
                           <span className="visually-hidden">Loading...</span>
                         </div>
                       </td>
                     </tr>
-                  )} */}
+                  ) : (
+                    <>
+                      {filteredPeminjaman.length > 0 ? (
+                        filteredPeminjaman.map((peminjaman) => (
+                          <tr key={peminjaman.uuid}>
+                            <td className="align-middle text-center">
+                              <span className="text-secondary text-xs font-weight-bold">
+                                {peminjaman.user.name}
+                              </span>
+                            </td>
+                            <td className="align-middle text-center">
+                              <span className="text-secondary text-xs font-weight-bold">
+                                {peminjaman.book.judul}
+                              </span>
+                            </td>
+                            <td className="align-middle text-center">
+                              <span className="text-secondary text-xs font-weight-bold">
+                                {convertToIndonesianDate(peminjaman.tanggal_pinjam)}
+                              </span>
+                            </td>
+                            <td className="align-middle text-center">
+                              <span className="text-secondary text-xs font-weight-bold">
+                                {convertToIndonesianDate(peminjaman.tanggal_kembali)}
+                              </span>
+                            </td>
+                            <td className="align-middle text-center">
+                              <span className="text-secondary text-xs font-weight-bold">
+                                {peminjaman.status}
+                              </span>
+                            </td>
+                            <td className="align-middle text-center">
+                              <Link
+                                to="/admin/edit-peminjaman"
+                                className="text-secondary font-weight-bold text-xs"
+                                data-toggle="tooltip"
+                                data-original-title="Edit Peminjaman"
+                              >
+                                Edit
+                              </Link>
+                              |
+                              <a
+                                href=""
+                                className="text-danger font-weight-bold text-xs"
+                                data-toggle="tooltip"
+                                data-original-title="Delete Peminjaman"
+                              >
+                                Delete
+                              </a>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="7" className="text-center">
+                            No peminjaman found
+                          </td>
+                        </tr>
+                      )}
+                    </>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -120,8 +149,10 @@ function ListPeminjaman({ peminjaman, deletePeminjaman }) {
     </div>
   );
 }
+
 ListPeminjaman.propTypes = {
   peminjaman: propTypes.array,
-  deletePeminjaman: propTypes.func,
+  isLoadingPmj: propTypes.bool,
 };
+
 export default ListPeminjaman;
