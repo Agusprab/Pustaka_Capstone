@@ -1,10 +1,29 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
-function EditPeminjaman() {
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import useInput from "../../hooks/useInput";
+function EditPeminjaman({ editPeminjaman }) {
+  const { uuid } = useParams();
+  const [userId, setUserId] = useInput("");
+  const [status, setStatus] = useInput("");
+  const [tanggal_kembali, setTanggal_Kembali] = useInput("");
+
+  const editHandler = (e) => {
+    e.preventDefault();
+    const newInput = {
+      uuid,
+      userId,
+      status,
+      tanggal_kembali,
+    };
+    console.log(newInput);
+    editPeminjaman(newInput);
+  };
   return (
     <div className="row">
-      <div className="col-12">
+      <form className="col-12" onSubmit={editHandler}>
         <div className="card mb-4">
           <div className="card-header pb-0">
             <h5>Edit Peminjaman</h5>
@@ -24,7 +43,7 @@ function EditPeminjaman() {
                   type="email"
                   className="form-control"
                   id="exampleFormControlInput1"
-                  placeholder="ASD"
+                  value={userId}
                   disabled
                 />
               </div>
@@ -41,8 +60,10 @@ function EditPeminjaman() {
                 <select
                   className="form-select"
                   aria-label="Default select example"
+                  value={status}
+                  onChange={setStatus}
                 >
-                  <option selected>--Select--</option>
+                  <option value="">--Select--</option>
                   <option value="1">Diajukan</option>
                   <option value="2">Dipinjamkan</option>
                   <option value="3">Selesai</option>
@@ -61,6 +82,8 @@ function EditPeminjaman() {
                 className="form-control"
                 id="exampleFormControlInput1"
                 placeholder="password"
+                value={tanggal_kembali}
+                onChange={setTanggal_Kembali}
               />
             </div>
           </div>
@@ -70,9 +93,11 @@ function EditPeminjaman() {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
-
+EditPeminjaman.propTypes = {
+  editPeminjaman: PropTypes.func,
+};
 export default EditPeminjaman;

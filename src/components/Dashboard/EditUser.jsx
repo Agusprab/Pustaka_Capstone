@@ -4,9 +4,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/react-in-jsx-scope */
 
-import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import useInput from '../../hooks/useInput';
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import useInput from "../../hooks/useInput";
 
 function EditUser({ users, editUser }) {
   const { uuid } = useParams();
@@ -27,7 +27,14 @@ function EditUser({ users, editUser }) {
   const editHandler = (e) => {
     e.preventDefault();
     const newUser = {
-      uuid, name, jenisKelamin, email, password, alamat, noTlp, role,
+      uuid,
+      name,
+      jenisKelamin,
+      email,
+      password,
+      alamat,
+      noTlp,
+      role,
     };
     console.log(newUser);
     editUser(newUser);
@@ -181,7 +188,9 @@ function EditUser({ users, editUser }) {
                 </div>
 
                 <div className="col-12 p-4">
-                  <button type="submit" className="btn btn-primary">Simpan</button>
+                  <button type="submit" className="btn btn-primary">
+                    Simpan
+                  </button>
                 </div>
               </div>
             </div>

@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 import { convertToIndonesianDate } from "../../utils";
 
-function ListPeminjaman({ peminjaman }) {
+function ListPeminjaman({ peminjaman, deletePeminjaman }) {
+  console.log(peminjaman);
   return (
     <div className="row">
       <div className="col-12">
@@ -88,17 +89,28 @@ function ListPeminjaman({ peminjaman }) {
                             Edit
                           </Link>
                           |
-                          <a
+                          <Link
                             href=""
                             className="text-danger font-weight-bold text-xs"
                             data-toggle="tooltip"
                             data-original-title="Delete Peminjaman"
+                            onClick={() => deletePeminjaman(user.uuid)}
                           >
                             Delete
-                          </a>
+                          </Link>
                         </td>
                       </tr>
                     ))}
+                  {/* ini berguna ketika ada perubahan di
+                  {!isLoading && (
+                    <tr>
+                      <td colSpan="9" className="text-center">
+                        <div className="spinner-border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                      </td>
+                    </tr>
+                  )} */}
                 </tbody>
               </table>
             </div>
@@ -108,5 +120,8 @@ function ListPeminjaman({ peminjaman }) {
     </div>
   );
 }
-ListPeminjaman.propTypes = { peminjaman: propTypes.array };
+ListPeminjaman.propTypes = {
+  peminjaman: propTypes.array,
+  deletePeminjaman: propTypes.func,
+};
 export default ListPeminjaman;

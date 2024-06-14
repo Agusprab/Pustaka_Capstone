@@ -2,50 +2,54 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/react-in-jsx-scope */
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getMe } from '../features/authSlice';
+import { Routes, Route, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../features/authSlice";
 import {
   getAllKategori,
   addKategori,
   deleteKategoriById,
   updateKategoriById,
-} from '../features/kategoriSlice';
+} from "../features/kategoriSlice";
 
-import Aside from '../components/Dashboard/Aside';
-import Navbar from '../components/Dashboard/Navbar';
-import Dashboard from '../components/Dashboard/Dashboard';
-import ListBook from '../components/Dashboard/ListBook';
-import ListUser from '../components/Dashboard/ListUser';
-import DetailProfile from '../components/Dashboard/DetailProfile';
-import Footer from '../components/Dashboard/Footer';
-import InputBook from '../components/Dashboard/InputBook';
-import InputUser from '../components/Dashboard/InputUser';
-import ListKategori from '../components/Dashboard/ListKategori';
-import InputKategori from '../components/Dashboard/InputKategori';
-import ListPeminjaman from '../components/Dashboard/ListPeminjaman';
-import InputPeminjaman from '../components/Dashboard/InputPeminjaman';
-import EditBook from '../components/Dashboard/EditBook';
-import EditKategori from '../components/Dashboard/EditKategori';
-import EditUser from '../components/Dashboard/EditUser';
-import EditPeminjaman from '../components/Dashboard/EditPeminjaman';
-import { getAllBook, addBook } from '../features/bookSlice';
+import Aside from "../components/Dashboard/Aside";
+import Navbar from "../components/Dashboard/Navbar";
+import Dashboard from "../components/Dashboard/Dashboard";
+import ListBook from "../components/Dashboard/ListBook";
+import ListUser from "../components/Dashboard/ListUser";
+import DetailProfile from "../components/Dashboard/DetailProfile";
+import Footer from "../components/Dashboard/Footer";
+import InputBook from "../components/Dashboard/InputBook";
+import InputUser from "../components/Dashboard/InputUser";
+import ListKategori from "../components/Dashboard/ListKategori";
+import InputKategori from "../components/Dashboard/InputKategori";
+import ListPeminjaman from "../components/Dashboard/ListPeminjaman";
+import InputPeminjaman from "../components/Dashboard/InputPeminjaman";
+import EditBook from "../components/Dashboard/EditBook";
+import EditKategori from "../components/Dashboard/EditKategori";
+import EditUser from "../components/Dashboard/EditUser";
+import EditPeminjaman from "../components/Dashboard/EditPeminjaman";
+import { getAllBook, addBook } from "../features/bookSlice";
 import {
   getAllUsers,
   addUser,
   deleteUserById,
   updateUserById,
-} from '../features/userSlice';
-import { getAllPeminjaman, addPeminjaman } from '../features/peminjamanSlice';
+} from "../features/userSlice";
+import {
+  getAllPeminjaman,
+  addPeminjaman,
+  deletePeminjamanById,
+} from "../features/peminjamanSlice";
 
 function AdminPage() {
-  const [navbar, setNavbar] = useState('');
+  const [navbar, setNavbar] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
   const { kategori, isLoadingKategori } = useSelector(
-    (state) => state.kategori,
+    (state) => state.kategori
   );
   const { book } = useSelector((state) => state.book);
   const { users, isLoading } = useSelector((state) => state.users);
@@ -69,47 +73,53 @@ function AdminPage() {
 
   useEffect(() => {
     if (isError) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [isError, navigate]);
 
   const isNavbarOpen = (navbarOpen) => {
     // fungsi ini untuk buka tutup navbar
     if (navbarOpen === true) {
-      setNavbar('g-sidenav-pinned');
+      setNavbar("g-sidenav-pinned");
     } else {
-      setNavbar('');
+      setNavbar("");
     }
   };
 
   const addNewBook = async (newBook) => {
     const data = await newBook;
     dispatch(addBook(data));
-    navigate('/admin/list-book');
+    navigate("/admin/list-book");
   };
   const addKategorihandle = (name) => {
     dispatch(addKategori(name));
-    navigate('/admin/list-kategori');
+    navigate("/admin/list-kategori");
   };
 
   const addUserhandle = (newUser) => {
     dispatch(addUser(newUser));
-    navigate('/admin/list-user');
+    navigate("/admin/list-user");
   };
   const addNewPeminjaman = (newInput) => {
     dispatch(addPeminjaman(newInput));
-    navigate('/admin/list-peminjaman-buku');
+    navigate("/admin/list-peminjaman-buku");
   };
   // eslint-disable-next-line no-shadow
   const deleteKategori = (uuid) => {
-    if (window.confirm('Are you sure you want to delete this category?')) {
+    if (window.confirm("Are you sure you want to delete this category?")) {
       dispatch(deleteKategoriById(uuid));
     }
   };
 
   const deleteUser = (uuid) => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
       dispatch(deleteUserById(uuid));
+    }
+  };
+
+  const deletePeminjaman = (uuid) => {
+    if (window.confirm("Are you sure you want to delete this?")) {
+      dispatch(deletePeminjamanById(uuid));
     }
   };
 
@@ -119,12 +129,17 @@ function AdminPage() {
       name,
     };
     dispatch(updateKategoriById(input));
-    navigate('/admin/list-kategori');
+    navigate("/admin/list-kategori");
   };
 
   const editUser = (newUser) => {
     dispatch(updateUserById(newUser));
-    navigate('/admin/list-user');
+    navigate("/admin/list-user");
+  };
+
+  const editPeminjaman = (newInput) => {
+    dispatch(updateUserById(newInput));
+    navigate("/admin/list-peminjaman-buku");
   };
 
   return (
@@ -139,27 +154,32 @@ function AdminPage() {
             <Route path="/list-book" element={<ListBook book={book} />} />
             <Route
               path="/list-user"
-              element={(
+              element={
                 <ListUser
                   users={users}
                   deleteUser={deleteUser}
                   isLoading={isLoading}
                 />
-              )}
+              }
             />
             <Route
               path="/list-kategori"
-              element={(
+              element={
                 <ListKategori
                   kategori={kategori}
                   deleteKategori={deleteKategori}
                   isLoadingKategori={isLoadingKategori}
                 />
-              )}
+              }
             />
             <Route
               path="/list-peminjaman-buku"
-              element={<ListPeminjaman peminjaman={peminjaman} />}
+              element={
+                <ListPeminjaman
+                  peminjaman={peminjaman}
+                  deletePeminjaman={deletePeminjaman}
+                />
+              }
             />
 
             <Route
@@ -168,7 +188,9 @@ function AdminPage() {
             />
             <Route
               path="/add-book"
-              element={<InputBook kategori={kategori} addNewBook={addNewBook} />}
+              element={
+                <InputBook kategori={kategori} addNewBook={addNewBook} />
+              }
             />
             <Route path="/edit-book" element={<EditBook />} />
             <Route
@@ -191,14 +213,22 @@ function AdminPage() {
             />
             <Route
               path="/add-peminjaman-buku"
-              element={(
+              element={
                 <InputPeminjaman
                   peminjaman={peminjaman}
-                  addPeminjaman={addNewPeminjaman}
+                  addNewPeminjaman={addNewPeminjaman}
                 />
-              )}
+              }
             />
-            <Route path="/edit-peminjaman" element={<EditPeminjaman />} />
+            <Route
+              path="/edit-peminjaman"
+              element={
+                <EditPeminjaman
+                  peminjaman={peminjaman}
+                  editPeminjaman={editPeminjaman}
+                />
+              }
+            />
           </Routes>
           <Footer />
         </div>

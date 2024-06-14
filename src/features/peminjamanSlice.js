@@ -60,9 +60,9 @@ export const addPeminjaman = createAsyncThunk('addPeminjaman', async (newInput, 
     }
 });
 
-export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (uuid, thunkAPI) => {
+export const deletePeminjamanById = createAsyncThunk('deletePeminjamanById', async (uuid, thunkAPI) => {
     try {
-        const response = await axios.delete(`${API_URL}/kategori/${uuid}`);
+        const response = await axios.delete(`${API_URL}/peminjaman/${uuid}`);
         return response.data;
     } catch (error) {
         if (error.response) {
@@ -139,15 +139,15 @@ export const peminjamanSlice = createSlice({
         });
 
         // Get kateogri by id
-        builder.addCase(deleteKategoriById.pending, (state) => {
+        builder.addCase(deletePeminjamanById.pending, (state) => {
             state.isLoading = true;
         });
-        builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
+        builder.addCase(deletePeminjamanById.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
             state.message = action.payload;
         });
-        builder.addCase(deleteKategoriById.rejected, (state, action) => {
+        builder.addCase(deletePeminjamanById.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
