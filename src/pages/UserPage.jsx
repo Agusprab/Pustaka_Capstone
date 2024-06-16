@@ -14,7 +14,7 @@ import DetailProfile from '../components/Dashboard/DetailProfile';
 import Footer from '../components/Dashboard/Footer';
 import ListPeminjaman from '../components/UserDashboard/ListPeminjaman';
 import { getAllPeminjaman } from '../features/peminjamanSlice';
-import { getAllKategori } from '../features/kategoriSlice';
+import { getAllKategori} from '../features/kategoriSlice';
 import { getAllBook } from '../features/bookSlice';
 
 function UserPage() {
@@ -25,7 +25,7 @@ function UserPage() {
   const { peminjaman } = useSelector((state) => state.peminjaman);
   const { kategori } = useSelector((state) => state.kategori);
   const { book } = useSelector((state) => state.book);
-
+  
   useEffect(() => {
     dispatch(getMe());
     dispatch(getAllPeminjaman());

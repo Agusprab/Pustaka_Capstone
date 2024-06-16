@@ -182,7 +182,7 @@ function AdminPage() {
                 <ListUser
                   users={users}
                   deleteUser={deleteUser}
-                  isLoadingUser={isLoadingUser}
+                  isLoading={isLoadingUser}
                 />
               )}
             />
