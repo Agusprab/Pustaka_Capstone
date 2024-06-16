@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function ListBook({ book = [], deleteBook, isLoadingBook }) {
+function ListBook({ book, deleteBook, isLoadingBook }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -127,7 +127,7 @@ function ListBook({ book = [], deleteBook, isLoadingBook }) {
                     </tr>
                   )}
 
-                  {!isLoadingBook && (
+                  {isLoadingBook && (
                   <tr>
                     <td colSpan="7" className="text-center">
                       <div className="spinner-border" role="status">

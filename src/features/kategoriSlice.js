@@ -9,9 +9,9 @@ import { API_URL } from '../config/index';
 const initialState = {
   kategori: null,
   isError: false,
-  isSuccess: false,
+  isSuccessKategori: false,
   isLoadingKategori: false,
-  message: '',
+  messageKategori: '',
 };
 
 export const getAllKategori = createAsyncThunk('getKategori', async (_, thunkAPI) => {
@@ -20,8 +20,8 @@ export const getAllKategori = createAsyncThunk('getKategori', async (_, thunkAPI
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageKategori = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageKategori);
     }
   }
 });
@@ -32,8 +32,8 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageKategori = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageKategori);
     }
   }
 });
@@ -46,8 +46,8 @@ export const addKategori = createAsyncThunk('addKategori', async (name, thunkAPI
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageKategori = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageKategori);
     }
   }
 });
@@ -58,8 +58,8 @@ export const deleteKategoriById = createAsyncThunk('deleteKategoriById', async (
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageKategori = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageKategori);
     }
   }
 });
@@ -72,8 +72,8 @@ export const updateKategoriById = createAsyncThunk('updateKategoriById', async (
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageKategori = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageKategori);
     }
   }
 });
@@ -90,13 +90,13 @@ export const kategoriSlice = createSlice({
     });
     builder.addCase(getAllKategori.fulfilled, (state, action) => {
       state.isLoadingKategori = false;
-      state.isSuccess = true;
+      state.isSuccessKategori = true;
       state.kategori = action.payload;
     });
     builder.addCase(getAllKategori.rejected, (state, action) => {
       state.isLoadingKategori = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageKategori = action.payload;
     });
 
     // Get kategori by id
@@ -105,13 +105,13 @@ export const kategoriSlice = createSlice({
     });
     builder.addCase(getKategoriById.fulfilled, (state, action) => {
       state.isLoadingKategori = false;
-      state.isSuccess = true;
+      state.isSuccessKategori = true;
       state.kategori = action.payload;
     });
     builder.addCase(getKategoriById.rejected, (state, action) => {
       state.isLoadingKategori = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageKategori = action.payload;
     });
 
     // Add kategori
@@ -120,13 +120,13 @@ export const kategoriSlice = createSlice({
     });
     builder.addCase(addKategori.fulfilled, (state, action) => {
       state.isLoadingKategori = false;
-      state.isSuccess = true;
-      state.message = action.payload;
+      state.isSuccessKategori = true;
+      state.messageKategori = action.payload;
     });
     builder.addCase(addKategori.rejected, (state, action) => {
       state.isLoadingKategori = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageKategori = action.payload;
     });
 
     // Get kateogri by id
@@ -135,13 +135,13 @@ export const kategoriSlice = createSlice({
     });
     builder.addCase(deleteKategoriById.fulfilled, (state, action) => {
       state.isLoadingKategori = false;
-      state.isSuccess = true;
-      state.message = action.payload;
+      state.isSuccessKategori = true;
+      state.messageKategori = action.payload;
     });
     builder.addCase(deleteKategoriById.rejected, (state, action) => {
       state.isLoadingKategori = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageKategori = action.payload;
     });
 
     // Update kategori
@@ -150,13 +150,13 @@ export const kategoriSlice = createSlice({
     });
     builder.addCase(updateKategoriById.fulfilled, (state, action) => {
       state.isLoadingKategori = false;
-      state.isSuccess = true;
-      state.message = action.payload;
+      state.isSuccessKategori = true;
+      state.messageKategori = action.payload;
     });
     builder.addCase(updateKategoriById.rejected, (state, action) => {
       state.isLoadingKategori = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageKategori = action.payload;
     });
   },
 });

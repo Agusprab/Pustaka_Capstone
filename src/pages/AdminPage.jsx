@@ -49,12 +49,12 @@ function AdminPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isError, user } = useSelector((state) => state.auth);
-  const { kategori, isLoadingKategori } = useSelector(
+  const { kategori, isLoadingKategori, messageKategori } = useSelector(
     (state) => state.kategori,
   );
-  const { book, isLoadingBook } = useSelector((state) => state.book);
-  const { users, isLoadingUser } = useSelector((state) => state.users);
-  const { peminjaman, isLoadingPmj } = useSelector((state) => state.peminjaman);
+  const { book, isLoadingBook, messageBook } = useSelector((state) => state.book);
+  const { users, isLoadingUser, messageUser } = useSelector((state) => state.users);
+  const { peminjaman, isLoadingPmj, messagePeminjaman } = useSelector((state) => state.peminjaman);
 
   useEffect(() => {
     dispatch(getMe());
@@ -64,21 +64,21 @@ function AdminPage() {
     dispatch(getAllPeminjaman());
   }, [dispatch]);
   // // console.log(peminjaman);
-  // useEffect(() => {
-  //   dispatch(getAllKategori());
-  // }, [kategori]);
+  useEffect(() => {
+    dispatch(getAllKategori());
+  }, [messageKategori]);
 
-  // useEffect(() => {
-  //   dispatch(getAllUsers());
-  // }, [users]);
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [messageUser]);
 
-  // useEffect(() => {
-  //   dispatch(getAllBook());
-  // }, [book]);
+  useEffect(() => {
+    dispatch(getAllBook());
+  }, [messageBook]);
 
-  // useEffect(() => {
-  //   dispatch(getAllPeminjaman());
-  // }, [peminjaman]);
+  useEffect(() => {
+    dispatch(getAllPeminjaman());
+  }, [messagePeminjaman]);
 
   useEffect(() => {
     if (isError) {
@@ -163,6 +163,7 @@ function AdminPage() {
 
   const updateDetailProfile = (newUser) => {
     dispatch(updateUserById(newUser));
+    alert('Profile Updated');
     navigate('/admin/detail-profile');
   };
   return (
@@ -181,7 +182,7 @@ function AdminPage() {
                 <ListUser
                   users={users}
                   deleteUser={deleteUser}
-                  isLoading={isLoadingUser}
+                  isLoadingUser={isLoadingUser}
                 />
               )}
             />

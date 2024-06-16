@@ -11,7 +11,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoadingPmj: false,
-  message: '',
+  messagePeminjaman: '',
 };
 
 export const getAllPeminjaman = createAsyncThunk('getPeminjaman', async (_, thunkAPI) => {
@@ -20,8 +20,8 @@ export const getAllPeminjaman = createAsyncThunk('getPeminjaman', async (_, thun
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messagePeminjaman = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messagePeminjaman);
     }
   }
 });
@@ -32,8 +32,8 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messagePeminjaman = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messagePeminjaman);
     }
   }
 });
@@ -50,8 +50,8 @@ export const addPeminjaman = createAsyncThunk('addPeminjaman', async (newInput, 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messagePeminjaman = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messagePeminjaman);
     }
   }
 });
@@ -62,8 +62,8 @@ export const deletePeminjamanById = createAsyncThunk('deletePeminjamanById', asy
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messagePeminjaman = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messagePeminjaman);
     }
   }
 });
@@ -77,8 +77,8 @@ export const updatePeminjamanById = createAsyncThunk('updatePeminjamanById', asy
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messagePeminjaman = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messagePeminjaman);
     }
   }
 });
@@ -101,7 +101,7 @@ export const peminjamanSlice = createSlice({
     builder.addCase(getAllPeminjaman.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
 
     // Get kategori by id
@@ -117,7 +117,7 @@ export const peminjamanSlice = createSlice({
     builder.addCase(getKategoriById.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
 
     // Add peminjaman
@@ -127,12 +127,12 @@ export const peminjamanSlice = createSlice({
     builder.addCase(addPeminjaman.fulfilled, (state, action) => {
       state.isLoadingPmj = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
     builder.addCase(addPeminjaman.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
 
     // Get kateogri by id
@@ -142,12 +142,12 @@ export const peminjamanSlice = createSlice({
     builder.addCase(deletePeminjamanById.fulfilled, (state, action) => {
       state.isLoadingPmj = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
     builder.addCase(deletePeminjamanById.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
 
     // Update kategori
@@ -157,12 +157,12 @@ export const peminjamanSlice = createSlice({
     builder.addCase(updatePeminjamanById.fulfilled, (state, action) => {
       state.isLoadingPmj = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
     builder.addCase(updatePeminjamanById.rejected, (state, action) => {
       state.isLoadingPmj = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messagePeminjaman = action.payload;
     });
   },
 });

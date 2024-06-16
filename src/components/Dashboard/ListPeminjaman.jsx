@@ -143,9 +143,9 @@ function ListPeminjaman({ peminjaman = [], isLoadingPmj, deletePeminjaman }) {
                     </>
                   )}
 
-                  {!isLoadingPmj && (
-                  <tr>
-                    <td colSpan="3" className="text-center">
+                  {isLoadingPmj && (
+                  <tr className="text-center">
+                    <td colSpan="6" className="text-center">
                       <div className="spinner-border" role="status">
                         <span className="visually-hidden">Loading...</span>
                       </div>

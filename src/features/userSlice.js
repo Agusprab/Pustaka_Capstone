@@ -11,7 +11,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoadingUser: false,
-  message: '',
+  messageUser: '',
 };
 
 export const getAllUsers = createAsyncThunk('getUser', async (_, thunkAPI) => {
@@ -20,8 +20,8 @@ export const getAllUsers = createAsyncThunk('getUser', async (_, thunkAPI) => {
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageUser = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageUser);
     }
   }
 });
@@ -32,8 +32,8 @@ export const getUserById = createAsyncThunk('getUserById', async (uuid, thunkAPI
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageUser = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageUser);
     }
   }
 });
@@ -52,8 +52,8 @@ export const addUser = createAsyncThunk('addUser', async (newUser, thunkAPI) => 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageUser = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageUser);
     }
   }
 });
@@ -64,8 +64,8 @@ export const deleteUserById = createAsyncThunk('deleteUserById', async (uuid, th
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageUser = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageUser);
     }
   }
 });
@@ -85,8 +85,8 @@ export const updateUserById = createAsyncThunk('updateUserById', async (newUser,
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageUser = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageUser);
     }
   }
 });
@@ -109,7 +109,7 @@ export const userSlice = createSlice({
     builder.addCase(getAllUsers.rejected, (state, action) => {
       state.isLoadingUser = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
 
     // Get kateogri by id
@@ -124,7 +124,7 @@ export const userSlice = createSlice({
     builder.addCase(getUserById.rejected, (state, action) => {
       state.isLoadingUser = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
 
     // Add User
@@ -134,12 +134,12 @@ export const userSlice = createSlice({
     builder.addCase(addUser.fulfilled, (state, action) => {
       state.isLoadingUser = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
     builder.addCase(addUser.rejected, (state, action) => {
       state.isLoadingUser = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
 
     // Get kateogri by id
@@ -149,12 +149,12 @@ export const userSlice = createSlice({
     builder.addCase(deleteUserById.fulfilled, (state, action) => {
       state.isLoadingUser = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
     builder.addCase(deleteUserById.rejected, (state, action) => {
       state.isLoadingUser = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
 
     // Update kategori
@@ -164,12 +164,12 @@ export const userSlice = createSlice({
     builder.addCase(updateUserById.fulfilled, (state, action) => {
       state.isLoadingUser = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
     builder.addCase(updateUserById.rejected, (state, action) => {
       state.isLoadingUser = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageUser = action.payload;
     });
   },
 });

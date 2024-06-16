@@ -11,7 +11,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoadingBook: false,
-  message: '',
+  messageBook: '',
 };
 
 export const getAllBook = createAsyncThunk('getBook', async (_, thunkAPI) => {
@@ -20,8 +20,8 @@ export const getAllBook = createAsyncThunk('getBook', async (_, thunkAPI) => {
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageBook = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageBook);
     }
   }
 });
@@ -32,8 +32,8 @@ export const getKategoriById = createAsyncThunk('getKategoriById', async (uuid, 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageBook = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageBook);
     }
   }
 });
@@ -53,8 +53,8 @@ export const addBook = createAsyncThunk('addBook', async (newBook, thunkAPI) => 
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageBook = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageBook);
     }
   }
 });
@@ -65,8 +65,8 @@ export const deleteBookById = createAsyncThunk('deleteBookById', async (uuid, th
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageBook = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageBook);
     }
   }
 });
@@ -86,8 +86,8 @@ export const updateBookById = createAsyncThunk('updateBookById', async (newBook,
     return response.data;
   } catch (error) {
     if (error.response) {
-      const message = error.response.data.msg;
-      return thunkAPI.rejectWithValue(message);
+      const messageBook = error.response.data.msg;
+      return thunkAPI.rejectWithValue(messageBook);
     }
   }
 });
@@ -110,7 +110,7 @@ export const bookSlice = createSlice({
     builder.addCase(getAllBook.rejected, (state, action) => {
       state.isLoadingBook = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
 
     // Get kateogri by id
@@ -126,7 +126,7 @@ export const bookSlice = createSlice({
     builder.addCase(getKategoriById.rejected, (state, action) => {
       state.isLoadingBook = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
 
     // Add kategori
@@ -136,12 +136,12 @@ export const bookSlice = createSlice({
     builder.addCase(addBook.fulfilled, (state, action) => {
       state.isLoadingBook = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
     builder.addCase(addBook.rejected, (state, action) => {
       state.isLoadingBook = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
 
     // Get kateogri by id
@@ -151,12 +151,12 @@ export const bookSlice = createSlice({
     builder.addCase(deleteBookById.fulfilled, (state, action) => {
       state.isLoadingBook = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
     builder.addCase(deleteBookById.rejected, (state, action) => {
       state.isLoadingBook = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
 
     // Update kategori
@@ -166,12 +166,12 @@ export const bookSlice = createSlice({
     builder.addCase(updateBookById.fulfilled, (state, action) => {
       state.isLoadingBook = false;
       state.isSuccess = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
     builder.addCase(updateBookById.rejected, (state, action) => {
       state.isLoadingBook = false;
       state.isError = true;
-      state.message = action.payload;
+      state.messageBook = action.payload;
     });
   },
 });

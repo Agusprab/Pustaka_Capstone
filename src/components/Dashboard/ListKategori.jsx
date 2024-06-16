@@ -31,7 +31,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
               </div>
               <input
                 type="text"
-                placeholder="Search by name"
+                placeholder="Search by Kategori"
                 value={searchTerm}
                 onChange={handleSearchChange}
                 className="form-control"
@@ -83,7 +83,7 @@ function ListKategori({ kategori, isLoadingKategori, deleteKategori }) {
                       </td>
                     </tr>
                   ))}
-                  {!isLoadingKategori && (
+                  {isLoadingKategori && (
                   <tr>
                     <td colSpan="3" className="text-center">
                       <div className="spinner-border" role="status">

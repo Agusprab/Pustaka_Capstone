@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { postedAt } from '../../utils/index';
 
-function ListUser({ users = [], deleteUser, isLoadingUser }) {
+function ListUser({ users, deleteUser, isLoadingUser }) {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearchChange = (event) => {
@@ -136,7 +136,7 @@ function ListUser({ users = [], deleteUser, isLoadingUser }) {
                   )}
                   {isLoadingUser && (
                   <tr>
-                    <td colSpan="3" className="text-center">
+                    <td colSpan="12" className="text-center">
                       <div className="spinner-border" role="status">
                         <span className="visually-hidden">Loading...</span>
                       </div>

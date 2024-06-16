@@ -17,4 +17,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const imageDB = getStorage(app);
-export const API_URL = 'http://localhost:3000';
+export const API_URL = 'https://backendpustakacapstone-production.up.railway.app';

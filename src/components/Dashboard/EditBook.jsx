@@ -35,24 +35,26 @@ function EditBook({ book, kategori, editBook }) {
 
       // Check if the cover is not the default image
       if (findBook.cover !== cover) {
-        // Extract the path from the URL
-        const imagePath = findBook.cover.split('/o/')[1].split('?')[0];
+        if (findBook.cover) {
+          // Extract the path from the URL
+          const imagePath = findBook.cover.split('/o/')[1].split('?')[0];
 
-        // Decode the path
-        const decodedPath = decodeURIComponent(imagePath);
+          // Decode the path
+          const decodedPath = decodeURIComponent(imagePath);
 
-        // Create a reference to the old image
-        const oldImgRef = ref(imageDB, decodedPath);
+          // Create a reference to the old image
+          const oldImgRef = ref(imageDB, decodedPath);
 
-        // Delete the old image
-        await deleteObject(oldImgRef).catch((error) => {
-          console.error('Error deleting old image: ', error);
-        });
+          // Delete the old image
+          await deleteObject(oldImgRef).catch((error) => {
+            console.error('Error deleting old image: ', error);
+          });
+        }
+        const imgRef = ref(imageDB, `images/${uuidv4()}`);
+        await uploadBytes(imgRef, cover);
+        const url = await getDownloadURL(imgRef);
+        newBook.cover = url;
       }
-      const imgRef = ref(imageDB, `images/${uuidv4()}`);
-      await uploadBytes(imgRef, cover);
-      const url = await getDownloadURL(imgRef);
-      newBook.cover = url;
 
       editBook(newBook);
     };
