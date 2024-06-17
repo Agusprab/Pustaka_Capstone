@@ -13,11 +13,13 @@ function RegisterInput({ onSubmit }) {
   // eslint-disable-next-line no-unused-vars
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ email, password, confirmPassword });
+    onSubmit({
+      name, email, password, confirmPassword,
+    });
   };
 
   return (
-    <form className="p-5 pt-3">
+    <form className="p-5 pt-3" onSubmit={handleSubmit}>
       <h1 className="font-poppins text-center">Register</h1>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">

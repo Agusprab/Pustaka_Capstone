@@ -56,7 +56,7 @@ function Aside({ user }) {
             <li className="nav-item">
               <Link className={filterLocationAdmin === 'list-book' ? 'nav-link active' : 'nav-link'} to="/admin/list-book">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                  <i className="fas fa-book text-warning text-sm opacity-10" />
                 </div>
                 <span className="nav-link-text ms-1">List Buku</span>
               </Link>
@@ -64,7 +64,7 @@ function Aside({ user }) {
             <li className="nav-item">
               <Link className={filterLocationAdmin === 'list-kategori' ? 'nav-link active' : 'nav-link'} to="/admin/list-kategori">
                 <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                  <i className="ni ni-calendar-grid-58 text-warning text-sm opacity-10" />
+                  <i className="ni ni-tag text-warning text-sm opacity-10" />
                 </div>
                 <span className="nav-link-text ms-1">List Kategori</span>
               </Link>

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -37,50 +38,65 @@ function Navbar({ isNavbarOpen, user }) {
   // eslint-disable-next-line consistent-return
   const namePagesHandler = (user) => {
     // Fungsi ini digunakan untuk menentukan page mana yang sedang aktif
-      
-    const filterLocation = location.pathname.split('/admin/')[1];
+    if (user && user.role === 'user') {
+      const filterLocation = location.pathname.split('/user/')[1];
 
-    if (!filterLocation) {
-      return 'Dashboard';
+      if (!filterLocation) {
+        return 'Dashboard';
+      }
+      if (filterLocation === 'list-peminjaman-buku') {
+        return 'List Peminjaman Buku';
+      }
+      if (filterLocation.includes('detail-book')) {
+        return 'Detail Book';
+      }
     }
-    if (filterLocation === 'list-book') {
-      return 'List Book';
-    }
-    if (filterLocation === 'list-user') {
-      return 'List User';
-    }
-    if (filterLocation === 'list-kategori') {
-      return 'List Kategori';
-    }
-    if (filterLocation === 'list-peminjaman-buku') {
-      return 'List Peminjaman Buku';
-    }
-    if (filterLocation === 'detail-profile') {
-      return 'Detail Profile';
-    }
-    if (filterLocation === 'add-book') {
-      return 'Add Book';
-    }
-    if (filterLocation === 'add-user') {
-      return 'Add User';
-    }
-    if (filterLocation === 'add-book') {
-      return 'Add Book';
-    }
-    if (filterLocation === 'add-kategori') {
-      return 'Add Kategori';
-    }
-    if (filterLocation === 'add-peminjaman-buku') {
-      return 'Add Peminjaman Buku';
-    }
-    if (filterLocation.includes('edit-kategori')) {
-      return 'Edit Kategori';
-    }
-    if (filterLocation.includes('edit-book')) {
-      return 'Edit Book';
-    }
-    if (filterLocation.includes('edit-peminjaman')) {
-      return 'Edit Peminjaman';
+
+    if (user && user.role === 'admin') {
+      const filterLocation = location.pathname.split('/admin/')[1];
+
+      if (!filterLocation) {
+        return 'Dashboard';
+      }
+      if (filterLocation === 'list-book') {
+        return 'List Book';
+      }
+      if (filterLocation === 'list-user') {
+        return 'List User';
+      }
+      if (filterLocation === 'list-kategori') {
+        return 'List Kategori';
+      }
+      if (filterLocation === 'list-peminjaman-buku') {
+        return 'List Peminjaman Buku';
+      }
+      if (filterLocation === 'detail-profile') {
+        return 'Detail Profile';
+      }
+      if (filterLocation === 'add-book') {
+        return 'Add Book';
+      }
+      if (filterLocation === 'add-user') {
+        return 'Add User';
+      }
+      if (filterLocation === 'add-book') {
+        return 'Add Book';
+      }
+      if (filterLocation === 'add-kategori') {
+        return 'Add Kategori';
+      }
+      if (filterLocation === 'add-peminjaman-buku') {
+        return 'Add Peminjaman Buku';
+      }
+      if (filterLocation.includes('edit-kategori')) {
+        return 'Edit Kategori';
+      }
+      if (filterLocation.includes('edit-book')) {
+        return 'Edit Book';
+      }
+      if (filterLocation.includes('edit-peminjaman')) {
+        return 'Edit Peminjaman';
+      }
     }
   };
 
@@ -104,11 +120,11 @@ function Navbar({ isNavbarOpen, user }) {
                 className="breadcrumb-item text-sm text-white active"
                 aria-current="page"
               >
-                {namePagesHandler()}
+                {namePagesHandler(user)}
               </li>
             </ol>
             <h6 className="font-weight-bolder text-white mb-0">
-              {namePagesHandler()}
+              {namePagesHandler(user)}
             </h6>
           </nav>
           <div
@@ -153,7 +169,7 @@ function Navbar({ isNavbarOpen, user }) {
                   <li className="mb-2">
                     <Link
                       className="dropdown-item border-radius-md"
-                      to="/admin/detail-profile"
+                      to={`/${user.role}/detail-profile`}
                     >
                       <div className="icon icon-shape icon-sm">
                         <i className="ni ni-single-02 text-dark text-sm opacity-10" />

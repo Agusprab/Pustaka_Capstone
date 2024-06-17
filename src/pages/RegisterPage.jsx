@@ -1,15 +1,21 @@
 /* eslint-disable no-alert */
 /* eslint-disable react/react-in-jsx-scope */
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import logo from '../asset/img/logo-pustaka.png';
 import RegisterInput from '../components/RegisterInput';
-
-const users = [];
+import { getAllUsers, addUser } from '../features/userSlice';
 
 function RegisterPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { users } = useSelector((state) => state.users);
 
-  const handleRegister = ({ email, password, confirmPassword }) => {
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+  const handleRegister = ({ name, email, password, confirmPassword }) => {
     if (password !== confirmPassword) {
       alert("Password doesn't match!");
       return;
@@ -19,7 +25,9 @@ function RegisterPage() {
       alert('User already exists!');
       return;
     }
-    users.push({ email, password });
+    const role = 'user';
+    const newUser = { name, email, password, role };
+    dispatch(addUser(newUser));
     alert('Registration successful!');
     navigate('/login');
   };

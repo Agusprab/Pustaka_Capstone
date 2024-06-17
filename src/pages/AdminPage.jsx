@@ -31,6 +31,8 @@ import EditBook from '../components/Dashboard/EditBook';
 import EditKategori from '../components/Dashboard/EditKategori';
 import EditUser from '../components/Dashboard/EditUser';
 import EditPeminjaman from '../components/Dashboard/EditPeminjaman';
+import NotFoundPage from '../components/Dashboard/404Page';
+
 import {
   getAllBook, addBook, deleteBookById, updateBookById,
 } from '../features/bookSlice';
@@ -69,6 +71,7 @@ function AdminPage() {
   }, [messageKategori]);
 
   useEffect(() => {
+    dispatch(getMe());
     dispatch(getAllUsers());
   }, [messageUser]);
 
@@ -84,7 +87,10 @@ function AdminPage() {
     if (isError) {
       navigate('/login');
     }
-  }, [isError, navigate]);
+    if (user && user.role === 'user') {
+      navigate('/user');
+    }
+  }, [isError, user, navigate]);
 
   const isNavbarOpen = (navbarOpen) => {
     // fungsi ini untuk buka tutup navbar
@@ -166,84 +172,103 @@ function AdminPage() {
     alert('Profile Updated');
     navigate('/admin/detail-profile');
   };
-  return (
-    <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
-      <div className="min-height-300 bg-primary position-absolute w-100" />
-      <Aside user={user} />
-      <main className="main-content position-relative border-radius-lg ">
-        <Navbar isNavbarOpen={isNavbarOpen} user={user} />
-        <div className="container-fluid py-4">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/list-book" element={<ListBook book={book} deleteBook={deleteBook} isLoadingBook={isLoadingBook} />} />
-            <Route
-              path="/list-user"
-              element={(
-                <ListUser
-                  users={users}
-                  deleteUser={deleteUser}
-                  isLoading={isLoadingUser}
-                />
-              )}
-            />
-            <Route
-              path="/list-kategori"
-              element={(
-                <ListKategori
-                  kategori={kategori}
-                  deleteKategori={deleteKategori}
-                  isLoadingKategori={isLoadingKategori}
-                />
-              )}
-            />
-            <Route
-              path="/list-peminjaman-buku"
-              element={<ListPeminjaman peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} deletePeminjaman={deletePeminjaman} />}
-            />
 
-            <Route
-              path="/detail-profile"
-              element={<DetailProfile user={user} updateUser={updateDetailProfile} />}
-            />
-            <Route
-              path="/add-book"
-              element={<InputBook kategori={kategori} addNewBook={addNewBook} />}
-            />
-            <Route path="/edit-book/:uuid" element={<EditBook book={book} kategori={kategori} editBook={editBook} />} />
-            <Route
-              path="/add-user"
-              element={<InputUser addUserhandle={addUserhandle} />}
-            />
-            <Route
-              path="/edit-user/:uuid"
-              element={<EditUser users={users} editUser={editUser} />}
-            />
-            <Route
-              path="/add-kategori"
-              element={<InputKategori addKategorihandle={addKategorihandle} />}
-            />
-            <Route
-              path="/edit-kategori/:uuid"
-              element={
-                <EditKategori kategori={kategori} editKategori={editKategori} />
-              }
-            />
-            <Route
-              path="/add-peminjaman-buku"
-              element={(
-                <InputPeminjaman
-                  peminjaman={peminjaman}
-                  addPeminjaman={addNewPeminjaman}
-                />
+  const editQtyBook = (newBook, status) => {
+    let updatedBook;
+
+    if (status === 'Dipinjamkan') {
+      updatedBook = { ...newBook, qty: newBook.qty - 1 };
+    }
+    if (status === 'Selesai') {
+      updatedBook = { ...newBook, qty: newBook.qty + 1 };
+    }
+    dispatch(updateBookById(updatedBook));
+  };
+  if (user) {
+    return (
+      <div className={`g-sidenav-show bg-gray-100 ${navbar}`}>
+        <div className="min-height-300 bg-primary position-absolute w-100" />
+        <Aside user={user} />
+        <main className="main-content position-relative border-radius-lg ">
+          <Navbar isNavbarOpen={isNavbarOpen} user={user} />
+          <div className="container-fluid py-4">
+            <Routes>
+              <Route path="/" element={<Dashboard totalBuku={book && book.length} totalKategori={kategori && kategori.length} totalUser={users && users.length} peminjaman={peminjaman} />} />
+              <Route path="/list-book" element={<ListBook book={book} deleteBook={deleteBook} isLoadingBook={isLoadingBook} />} />
+              <Route
+                path="/list-user"
+                element={(
+                  <ListUser
+                    users={users}
+                    deleteUser={deleteUser}
+                    isLoading={isLoadingUser}
+                  />
               )}
-            />
-            <Route path="/edit-peminjaman/:uuid" element={<EditPeminjaman editPeminjaman={editPeminjaman} peminjaman={peminjaman} />} />
-          </Routes>
-          <Footer />
-        </div>
-      </main>
-    </div>
-  );
+              />
+              <Route
+                path="/list-kategori"
+                element={(
+                  <ListKategori
+                    kategori={kategori}
+                    deleteKategori={deleteKategori}
+                    isLoadingKategori={isLoadingKategori}
+                  />
+              )}
+              />
+              <Route
+                path="/list-peminjaman-buku"
+                element={<ListPeminjaman peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} deletePeminjaman={deletePeminjaman} />}
+              />
+
+              <Route
+                path="/detail-profile"
+                element={<DetailProfile user={user} updateUser={updateDetailProfile} />}
+              />
+              <Route
+                path="/add-book"
+                element={<InputBook kategori={kategori} addNewBook={addNewBook} />}
+              />
+              <Route path="/edit-book/:uuid" element={<EditBook book={book} kategori={kategori} editBook={editBook} />} />
+              <Route
+                path="/add-user"
+                element={<InputUser addUserhandle={addUserhandle} />}
+              />
+              <Route
+                path="/edit-user/:uuid"
+                element={<EditUser users={users} editUser={editUser} />}
+              />
+              <Route
+                path="/add-kategori"
+                element={<InputKategori addKategorihandle={addKategorihandle} />}
+              />
+              <Route
+                path="/edit-kategori/:uuid"
+                element={
+                  <EditKategori kategori={kategori} editKategori={editKategori} />
+              }
+              />
+              <Route
+                path="/add-peminjaman-buku"
+                element={(
+                  <InputPeminjaman
+                    peminjaman={peminjaman}
+                    addPeminjaman={addNewPeminjaman}
+                  />
+              )}
+              />
+              <Route path="/edit-peminjaman/:uuid" element={<EditPeminjaman editPeminjaman={editPeminjaman} peminjaman={peminjaman} editQtyBook={editQtyBook} />} />
+              <Route path="/admin/*" element={<NotFoundPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return null;
+  }
 }
 
 export default AdminPage;

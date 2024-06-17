@@ -40,7 +40,7 @@ function DetailProfile({ user, updateUser }) {
               <div className="col-4 col-lg-4 order-lg-2">
                 <div className="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
 
-                  <img src="../../public/img/team-2.jpg" className="rounded-circle img-fluid border border-2 border-white" />
+                  <img src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Fvecteezy_profile-user-icon-isolated-on-white-background-vector-eps10_.jpg?alt=media&token=d8d3d4bf-0c2f-430e-a5af-2701a8540b65" className="rounded-circle img-fluid border border-2 border-white" />
 
                 </div>
               </div>

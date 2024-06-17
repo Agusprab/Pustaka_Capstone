@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -9,7 +10,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useInput from '../../hooks/useInput';
 
-function EditPeminjaman({ editPeminjaman, peminjaman }) {
+function EditPeminjaman({ editPeminjaman, peminjaman, editQtyBook }) {
   if (peminjaman) {
     const { uuid } = useParams();
     const findPeminjaman = (peminjaman && peminjaman.length > 0) ? peminjaman.find((item) => item.uuid === uuid) : null;
@@ -20,14 +21,24 @@ function EditPeminjaman({ editPeminjaman, peminjaman }) {
 
     const editHandler = (e) => {
       e.preventDefault();
-      const newInput = {
-        uuid,
-        userId,
-        status,
-        tanggal_kembali,
-      };
-
+      let newInput;
+      if (!tanggal_kembali || tanggal_kembali === null) {
+        newInput = {
+          uuid,
+          userId,
+          status,
+          tanggal_kembali: null,
+        };
+      } else {
+        newInput = {
+          uuid,
+          userId,
+          status,
+          tanggal_kembali,
+        };
+      }
       editPeminjaman(newInput);
+      editQtyBook(findPeminjaman.book, status);
     };
     return (
       <div className="row">
@@ -113,5 +124,7 @@ function EditPeminjaman({ editPeminjaman, peminjaman }) {
 }
 EditPeminjaman.propTypes = {
   editPeminjaman: PropTypes.func,
+  peminjaman: PropTypes.array,
+  editQtyBook: PropTypes.func,
 };
 export default EditPeminjaman;
