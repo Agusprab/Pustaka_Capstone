@@ -1,6 +1,7 @@
 
-![Logo](https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Flogo-pustaka.png?alt=media&token=402141d7-5504-4645-a720-42477cabf06f)
-
+<p align="center" width="100%">
+    <img width="33%" src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Flogo-pustaka.png?alt=media&token=402141d7-5504-4645-a720-42477cabf06f">
+</p>
 
 # Pustaka
 
