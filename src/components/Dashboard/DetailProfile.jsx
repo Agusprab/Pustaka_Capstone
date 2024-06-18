@@ -35,7 +35,7 @@ function DetailProfile({ user, updateUser }) {
       <div className="row">
         <div className="col-lg-4 col-12 d-block d-lg-none">
           <div className="card card-profile">
-            <img src="../../public/img/bg-profile.jpg" alt="Image placeholder" className="card-img-top" />
+            <img src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Fbg-profile.jpg?alt=media&token=159b3db1-d023-4a39-ae1b-2d5cc53731a7" alt="Image placeholder" className="card-img-top" />
             <div className="row justify-content-center">
               <div className="col-4 col-lg-4 order-lg-2">
                 <div className="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
@@ -140,7 +140,7 @@ function DetailProfile({ user, updateUser }) {
         </div>
         <div className="col-lg-4 d-none d-lg-block">
           <div className="card card-profile">
-            <img src="../../public/img/bg-profile.jpg" alt="Image placeholder" className="card-img-top" />
+            <img src="https://firebasestorage.googleapis.com/v0/b/capstoneprojek.appspot.com/o/images%2Fbg-profile.jpg?alt=media&token=159b3db1-d023-4a39-ae1b-2d5cc53731a7" alt="Image placeholder" className="card-img-top" />
             <div className="row justify-content-center">
               <div className="col-4 col-lg-4 order-lg-2">
                 <div className="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
