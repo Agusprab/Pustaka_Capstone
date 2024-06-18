@@ -83,6 +83,7 @@ function UserPage() {
           <Navbar isNavbarOpen={isNavbarOpen} user={user} />
           <div className="container-fluid py-4">
             <Routes>
+              <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<Dashboard kategori={kategori} book={book} />} />
 
               <Route path="/list-peminjaman-buku" element={<ListPeminjaman user={user} peminjaman={peminjaman} isLoadingPmj={isLoadingPmj} />} />
@@ -91,7 +92,6 @@ function UserPage() {
                 path="/detail-profile"
                 element={<DetailProfile user={user} updateUser={updateDetailProfile} />}
               />
-              <Route path="/user/*" element={<NotFoundPage />} />
             </Routes>
             <Footer />
           </div>

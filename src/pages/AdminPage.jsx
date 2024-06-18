@@ -193,6 +193,7 @@ function AdminPage() {
           <Navbar isNavbarOpen={isNavbarOpen} user={user} />
           <div className="container-fluid py-4">
             <Routes>
+              <Route path="*" element={<NotFoundPage />} />
               <Route path="/" element={<Dashboard totalBuku={book && book.length} totalKategori={kategori && kategori.length} totalUser={users && users.length} peminjaman={peminjaman} />} />
               <Route path="/list-book" element={<ListBook book={book} deleteBook={deleteBook} isLoadingBook={isLoadingBook} />} />
               <Route
@@ -257,7 +258,7 @@ function AdminPage() {
               )}
               />
               <Route path="/edit-peminjaman/:uuid" element={<EditPeminjaman editPeminjaman={editPeminjaman} peminjaman={peminjaman} editQtyBook={editQtyBook} />} />
-              <Route path="/admin/*" element={<NotFoundPage />} />
+
             </Routes>
             <Footer />
           </div>
